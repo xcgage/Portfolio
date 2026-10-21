@@ -1,105 +1,110 @@
 (function () {
-  'use strict';
+  "use strict";
 
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-  var queued = false;
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // ---- Sticky nav: highlight the link for the section you are in ----
-  // Each section has data-group (about, work, whop, skills, contact); each nav link has data-nav.
-  var links = document.querySelectorAll('.nav [data-nav]');
-  var sections = document.querySelectorAll('main section[data-group]');
-  var navHeight = (document.querySelector('.nav') || {}).offsetHeight || 56;
+  /* ----- Nav: highlight the link for the section in view -----
+     Each <section data-group="..."> maps to a nav link with data-nav="...". An empty group highlights nothing. */
+  var links = document.querySelectorAll("[data-nav]");
+  var sections = Array.prototype.slice.call(document.querySelectorAll("section[data-group]"));
 
-  function highlightNav() {
-    var current = null;
+  function updateNav() {
+    var navH = document.querySelector(".nav").offsetHeight;
+    var current = "";
     for (var i = 0; i < sections.length; i++) {
-      if (sections[i].getBoundingClientRect().top <= navHeight + 80) {
-        current = sections[i].getAttribute('data-group');
-      }
+      if (sections[i].getBoundingClientRect().top <= navH + 120) current = sections[i].getAttribute("data-group");
     }
-    // Hero (above the first grouped section) = nothing highlighted.
-    var atBottom = window.innerHeight + window.pageYOffset >= document.documentElement.scrollHeight - 4;
-    if (atBottom) { current = 'contact'; }
-    links.forEach(function (a) {
-      var on = a.getAttribute('data-nav') === current;
-      a.classList.toggle('is-active', on);
-      if (on) { a.setAttribute('aria-current', 'true'); } else { a.removeAttribute('aria-current'); }
+    for (var j = 0; j < links.length; j++) {
+      links[j].classList.toggle("is-active", links[j].getAttribute("data-nav") === current);
+    }
+  }
+
+  /* ----- Pipeline: a dot travels through the five stages as you scroll, lighting each one ----- */
+  var pipe = document.querySelector("[data-pipe]");
+  var stages = pipe ? pipe.querySelectorAll(".pipe__stage") : [];
+
+  function setPipe(p) {
+    pipe.style.setProperty("--p", p.toFixed(3));
+    for (var i = 0; i < stages.length; i++) {
+      stages[i].classList.toggle("is-lit", p >= i / (stages.length - 1) - 0.02);
+    }
+  }
+
+  function updatePipe() {
+    if (!pipe) return;
+    if (reduceMotion) { setPipe(1); return; }
+    var vh = window.innerHeight;
+    var r = pipe.getBoundingClientRect();
+    var p = (vh * 0.85 - r.top) / (vh * 0.4 + r.height);
+    setPipe(Math.max(0, Math.min(1, p)));
+  }
+
+  var ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(function () {
+      updateNav();
+      updatePipe();
+      ticking = false;
     });
   }
 
-  // ---- CRM pipeline: the dot (--p) follows the scroll; each stage lights when the dot reaches it ----
-  var pipe = document.querySelector('[data-pipe]');
-  var stages = pipe ? pipe.querySelectorAll('.pipe__stage') : [];
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  updateNav();
+  updatePipe();
 
-  function movePipe() {
-    if (!pipe) { return; }
-    var vh = window.innerHeight;
-    var r = pipe.getBoundingClientRect();
-    var center = r.top + r.height / 2;
-    var t = reduce.matches ? 1 : (vh * 0.85 - center) / (vh * 0.5);
-    t = Math.max(0, Math.min(1, t));
-    pipe.style.setProperty('--p', t);
-    for (var i = 0; i < stages.length; i++) {
-      var lit = t > 0 && t >= i / (stages.length - 1) - 0.0001;
-      stages[i].classList.toggle('is-lit', lit);
-    }
+  /* ----- Gentle fade-up as sections come into view ----- */
+  var reveals = document.querySelectorAll(".reveal");
+  if (reduceMotion || !("IntersectionObserver" in window)) {
+    for (var k = 0; k < reveals.length; k++) reveals[k].classList.add("is-in");
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-in");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
+    for (var m = 0; m < reveals.length; m++) io.observe(reveals[m]);
   }
 
-  function update() {
-    queued = false;
-    highlightNav();
-    movePipe();
-  }
-
-  function queue() {
-    if (!queued) {
-      queued = true;
-      window.requestAnimationFrame(update);
-    }
-  }
-
-  window.addEventListener('scroll', queue, { passive: true });
-  window.addEventListener('resize', queue);
-  window.addEventListener('load', queue);
-
-  if (reduce.addEventListener) {
-    reduce.addEventListener('change', queue);
-  } else if (reduce.addListener) {
-    reduce.addListener(queue);
-  }
-
-  // ---- Gallery videos: the poster is a button. The video is only created (and loaded) on click, muted ----
-  document.querySelectorAll('[data-video]').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var v = document.createElement('video');
-      v.src = btn.getAttribute('data-video');
+  /* ----- Gallery videos: only the poster loads until clicked, then it plays muted ----- */
+  var tileButtons = document.querySelectorAll("[data-video]");
+  for (var t = 0; t < tileButtons.length; t++) {
+    tileButtons[t].addEventListener("click", function (e) {
+      var btn = e.currentTarget;
+      var box = btn.parentNode;
+      var v = document.createElement("video");
+      v.src = btn.getAttribute("data-video");
       v.muted = true;
       v.defaultMuted = true;
       v.controls = true;
-      v.playsInline = true;
       v.autoplay = true;
-      v.setAttribute('aria-label', btn.getAttribute('data-title') + ' (video)');
-      btn.replaceWith(v);
-      var p = v.play();
-      if (p && p.catch) { p.catch(function () {}); }
-    });
-  });
-
-  // ---- How I think: click an image to enlarge it. Click anywhere in the dialog, or press Esc, to close ----
-  var zoom = document.querySelector('[data-zoom-dialog]');
-  if (zoom) {
-    var zoomImg = zoom.querySelector('img');
-    document.querySelectorAll('[data-zoom]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        zoomImg.src = btn.getAttribute('data-zoom');
-        zoomImg.alt = btn.getAttribute('data-alt');
-        if (zoom.showModal) { zoom.showModal(); } else { zoom.setAttribute('open', ''); }
-      });
-    });
-    zoom.addEventListener('click', function () {
-      if (zoom.close) { zoom.close(); } else { zoom.removeAttribute('open'); }
+      v.loop = true;
+      v.playsInline = true;
+      v.setAttribute("aria-label", btn.getAttribute("aria-label").replace(/^Play /, "").replace(/ \(video, muted\)$/, ""));
+      box.replaceChild(v, btn);
+      var play = v.play();
+      if (play && play.catch) play.catch(function () {});
     });
   }
 
-  update();
+  /* ----- How I think: click to enlarge (native <dialog>; click anywhere or Esc closes) ----- */
+  var dialog = document.querySelector("[data-zoom-dialog]");
+  if (dialog && dialog.showModal) {
+    var big = dialog.querySelector("img");
+    var openers = document.querySelectorAll("[data-zoom]");
+    for (var z = 0; z < openers.length; z++) {
+      openers[z].addEventListener("click", function (e) {
+        var b = e.currentTarget;
+        big.src = b.getAttribute("data-zoom");
+        big.alt = b.getAttribute("data-alt") || "";
+        dialog.showModal();
+      });
+    }
+    dialog.addEventListener("click", function () { dialog.close(); });
+  }
 })();

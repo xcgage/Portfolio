@@ -4,25 +4,33 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0E1310">
   <title>Gage Dunn</title>
   <meta name="description" content="I run customer operations and build the systems behind them.">
   <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add("js");</script>
   <script src="script.js" defer></script>
 </head>
 <body>
 
-  <!-- Sticky top nav. script.js highlights the link for the section you are in (data-group on each section). -->
+  <!-- Subtle fixed film grain (CSS only) -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Sticky nav. script.js highlights the link for the section in view (data-group on each section). -->
   <header class="nav">
     <div class="wrap nav__in">
       <a class="nav__brand" href="#top">Gage Dunn</a>
       <nav aria-label="Primary">
         <ul>
-          <li><a href="#bio" data-nav="about">About</a></li>
-          <li><a href="#boulder" data-nav="work">Work</a></li>
+          <li><a href="#about" data-nav="about">About</a></li>
+          <li><a href="#how-i-think" data-nav="projects">Projects</a></li>
           <li><a href="#whop" data-nav="whop">Whop</a></li>
           <li><a href="#skills" data-nav="skills">Skills</a></li>
-          <li><a href="#closing" data-nav="contact">Contact</a></li>
+          <li><a href="#contact" data-nav="contact">Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -30,61 +38,65 @@
 
   <main>
 
-    <!-- SEC. 01 HEADLINE (content.md > NAME, HEADLINE) -->
+    <!-- 1. HERO (content.md > NAME, HERO) -->
     <section class="hero" id="top">
-      <div class="wrap">
-        <p class="tag">SEC. 01 / 11</p>
-        <h1 class="hero__name">Gage Dunn</h1>
-        <p class="hero__tag">I run customer operations and build the <span class="mark">systems</span> behind them.</p>
-        <p class="hero__sub">Customer success, trust &amp; safety, and operations. Open to remote, hybrid, or in-person.</p>
+      <div class="hero__media">
+        <img src="img/relaxed.jpg" width="1206" height="1206" fetchpriority="high"
+             alt="Gage Dunn lying back in dark green grass with eyes closed and hands behind the head, wearing a gray ribbed sweater, white flowers at the lower left">
+      </div>
+      <div class="wrap hero__in">
+        <div class="hero__text">
+          <h1 class="hero__name">Gage Dunn</h1>
+          <p class="hero__tag">I run customer operations and build the <em>systems</em> behind them.</p>
+          <p class="hero__sub">Customer success, trust &amp; safety, and operations. Open to remote, hybrid, or in-person.</p>
+          <p class="pill pill--live"><span class="pill__dot" aria-hidden="true"></span>Available now</p>
+          <p class="hero__cta">
+            <a class="btn btn--solid" href="Gage-Dunn-Resume.pdf" download>Download resume (PDF)</a>
+            <a class="btn" href="mailto:gagecdunn@gmail.com">Email me</a>
+          </p>
+        </div>
       </div>
     </section>
 
-    <!-- SEC. 02 BIO (content.md > BIO, TIMELINE, CREDENTIALS) -->
-    <section class="sec" id="bio" data-group="about">
+    <!-- 2. ABOUT (content.md > ABOUT) -->
+    <section class="sec" id="about" data-group="about">
       <div class="wrap">
-        <p class="tag">SEC. 02 / 11</p>
-        <h2>Bio</h2>
+        <h2 class="reveal">About</h2>
 
-        <div class="bio">
-          <figure class="photo">
-            <img src="img/me.jpg" width="900" height="1125" loading="lazy"
-                 alt="Portrait of Gage Dunn in glasses and a pinstripe suit, holding a black coffee cup">
-            <figcaption>FIG. 01 / PORTRAIT</figcaption>
+        <div class="about reveal">
+          <figure class="portrait">
+            <img src="img/professional.jpg" width="800" height="1000" loading="lazy"
+                 alt="Portrait of Gage Dunn in glasses and a pinstripe suit, holding a black coffee cup and looking into the camera">
           </figure>
 
-          <div class="bio__body">
-            <p class="prose">I started in sales and client success. At eXp Realty I sold a $10,000 brand-building course to real estate agents, averaging 6-7 sales a month, and ran weekly check-ins to audit each agent's business and close the gaps. At Floor &amp; Decor I sold more than $300,000 in flooring and ran warehouse inventory audits. At Whop, a payments platform for online businesses, I moved from support into operations and trust &amp; safety: 400-700 customer conversations a week, then 250-800 risk and compliance reviews a day. Since 2022 I've also run XC Consult, a one-person web, design, and SEO practice.</p>
+          <div class="about__text">
+            <p class="prose">I started in sales and client success. At eXp Realty I sold a $10,000 brand-building course to real estate agents, averaging 6-7 sales a month, and ran weekly check-ins to audit each agent's business and close the gaps. At Floor &amp; Decor I sold more than $300,000 in flooring and ran warehouse inventory audits. At Whop, a payments platform for online businesses, I moved from support into operations and trust &amp; safety. Since 2022 I've also run XC Consult, a one-person web, design, and SEO practice.</p>
 
-            <table class="timeline">
-              <caption class="label">Timeline</caption>
-              <thead>
-                <tr><th scope="col">Years</th><th scope="col">Role</th></tr>
-              </thead>
-              <tbody>
-                <tr><td class="yrs">2025-2026</td><td><strong>Whop</strong><span>CX Operations, Trust &amp; Safety, Customer Support</span></td></tr>
-                <tr><td class="yrs">2025</td><td><strong>Floor &amp; Decor</strong><span>Sales &amp; Warehouse Associate</span></td></tr>
-                <tr><td class="yrs">2024-2025</td><td><strong>eXp Realty</strong><span>Realty Consultant (Sales &amp; Client Success)</span></td></tr>
-                <tr><td class="yrs">2022-present</td><td><strong>XC Consult</strong><span>Founder &amp; Consultant</span></td></tr>
-              </tbody>
-            </table>
+            <div>
+              <p class="label">Timeline</p>
+              <ul class="timeline">
+                <li><span class="yrs">2025-2026</span><span class="role"><strong>Whop</strong><span>CX Operations, Trust &amp; Safety, Customer Support</span></span></li>
+                <li><span class="yrs">2025</span><span class="role"><strong>Floor &amp; Decor</strong><span>Sales &amp; Warehouse Associate</span></span></li>
+                <li><span class="yrs">2024-2025</span><span class="role"><strong>eXp Realty</strong><span>Realty Consultant</span></span></li>
+                <li><span class="yrs">2022-present</span><span class="role"><strong>XC Consult</strong><span>Founder &amp; Consultant</span></span></li>
+              </ul>
+            </div>
 
-            <p class="stamp">Google IT Support Professional Certificate (Google / Coursera)</p>
+            <p class="pill pill--quiet">Google IT Support Professional Certificate (Google / Coursera)</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SEC. 03 HOW I THINK (content.md > HOW I THINK) -->
-    <section class="sec" id="how-i-think" data-group="about">
+    <!-- 3. HOW I THINK (content.md > HOW I THINK) -->
+    <section class="sec" id="how-i-think" data-group="projects">
       <div class="wrap">
-        <p class="tag">SEC. 03 / 11</p>
-        <h2>How I think</h2>
-        <p class="lead">Same brief, two executions. Concept work.</p>
+        <h2 class="reveal">How I think</h2>
+        <p class="lead reveal">Same brief, two executions. Concept work.</p>
 
-        <div class="panels">
+        <div class="panels reveal">
           <figure class="panel">
-            <p class="panel__label"><b>GENERIC</b><span>CLICK TO ENLARGE</span></p>
+            <p class="panel__label"><b>GENERIC</b><span>Click to enlarge</span></p>
             <button type="button" class="panel__open" data-zoom="img/how-i-think-generic.jpg"
                     data-alt="Generic AI SEO ad: bright blue sky, a thumbs-up robot, stacks of cash, a red starburst and a red Click here to dominate search button"
                     aria-label="Enlarge the generic ad">
@@ -93,7 +105,7 @@
             </button>
           </figure>
           <figure class="panel">
-            <p class="panel__label"><b>INTENTIONAL</b><span>CLICK TO ENLARGE</span></p>
+            <p class="panel__label"><b>INTENTIONAL</b><span>Click to enlarge</span></p>
             <button type="button" class="panel__open" data-zoom="img/how-i-think-intentional.jpg"
                     data-alt="Intentional SEO ad: a hiker on a mountain ridge at sunset above the clouds, with the headline Get Found. Stay Ahead."
                     aria-label="Enlarge the intentional ad">
@@ -103,100 +115,74 @@
           </figure>
         </div>
 
-        <p class="caption">Nearly 11 years of video editing and graphic design.</p>
+        <p class="caption reveal">Nearly 11 years of video editing and graphic design.</p>
       </div>
     </section>
 
-    <!-- SEC. 04 BOULDER AUTO DETAIL, flagship (content.md > BOULDER AUTO DETAIL) -->
-    <section class="sec" id="boulder" data-group="work">
+    <!-- 4. BOULDER AUTO DETAIL, flagship (content.md > WORK) -->
+    <section class="sec" id="boulder" data-group="projects">
       <div class="wrap">
-        <p class="tag">SEC. 04 / 11 &middot; FLAGSHIP</p>
-        <h2>Boulder Auto Detail</h2>
-        <p class="sub">Full site rebuild, SEO roadmap, content strategy</p>
+        <article class="card card--flagship reveal">
+          <h2>Boulder Auto Detail</h2>
+          <p class="prose">Built a new boulderautodetail.com in WordPress for a local detailing shop. Kept the existing URLs and redirects intact so search rankings carried through the migration. Built nine vehicle-brand hub pages, each with service tabs for paint protection film, ceramic coating, and window tint. Wrote an SEO roadmap and a post-launch content strategy, and taught the client how to run an evergreen blog.</p>
 
-        <p class="prose">Built a new boulderautodetail.com in WordPress for a local detailing shop. Kept the existing URLs and redirects intact so search rankings carried through the migration. Built nine vehicle-brand hub pages (Tesla, BMW, Porsche, Ford, Audi, Mercedes-Benz, Rivian, Land Rover, Corvette), each with service tabs for paint protection film, ceramic coating, and window tint. Wrote the SEO roadmap and a post-launch content strategy, and taught the client how to run an evergreen blog.</p>
-
-        <div class="cars">
-          <figure class="card">
-            <img src="img/porsche-front.jpg" width="1000" height="562" loading="lazy" alt="White Porsche 911 render, front three-quarter view">
-            <figcaption><span>01</span><span>PORSCHE / FRONT</span></figcaption>
-          </figure>
-          <figure class="card">
-            <img src="img/corvette-back.jpg" width="1000" height="563" loading="lazy" alt="White Corvette render, rear three-quarter view">
-            <figcaption><span>02</span><span>CORVETTE / BACK</span></figcaption>
-          </figure>
-          <figure class="card">
-            <img src="img/bmw-back.jpg" width="1000" height="582" loading="lazy" alt="BMW render, rear view">
-            <figcaption><span>03</span><span>BMW / BACK</span></figcaption>
-          </figure>
-          <figure class="card">
-            <img src="img/ford-side.jpg" width="1000" height="455" loading="lazy" alt="Ford render, side view">
-            <figcaption><span>04</span><span>FORD / SIDE</span></figcaption>
-          </figure>
-        </div>
-        <p class="note"><span class="todo">[TODO: accurate description of how the vehicle visuals were made]</span></p>
-
-        <h3 class="label">Rebuilt site</h3>
-        <div class="shots">
-          <figure class="card">
-            <img src="img/boulder-site-1.jpg" width="1100" height="524" loading="lazy" alt="Boulder Auto Detail homepage hero with the headline Your Car, Held to a Higher Standard">
-            <figcaption><span>S-01</span></figcaption>
-          </figure>
-          <figure class="card">
-            <img src="img/boulder-site-3.jpg" width="1100" height="591" loading="lazy" alt="Boulder Auto Detail Areas We Serve section and brands-serviced panel">
-            <figcaption><span>S-02</span></figcaption>
-          </figure>
-          <figure class="card">
-            <img src="img/boulder-site-5.jpg" width="1100" height="392" loading="lazy" alt="Boulder Auto Detail Choose Your Service cards for window tint, paint protection film, and ceramic coating">
-            <figcaption><span>S-03</span></figcaption>
-          </figure>
-        </div>
-
-        <!-- SEO roadmap viewer. When the file exists: put it in /files and replace the .doc__page contents
-             with <iframe src="files/seo-roadmap.pdf" title="SEO roadmap"></iframe> -->
-        <details class="doc">
-          <summary>SEO roadmap <span class="doc__hint" aria-hidden="true">[ open ]</span></summary>
-          <div class="doc__viewer">
-            <p class="doc__bar"><span>DOC / SEO ROADMAP</span><span>PAGE 1 / [TODO]</span></p>
-            <div class="doc__page"><span class="todo">[TODO: SEO roadmap file, not in the project yet]</span></div>
+          <div class="cars">
+            <figure class="car"><img src="img/porsche-front.jpg" width="1200" height="675" loading="lazy" alt="White Porsche sports car, front three-quarter view, on a dark background"></figure>
+            <figure class="car"><img src="img/corvette-back.jpg" width="1200" height="675" loading="lazy" alt="White Corvette, rear three-quarter view, on a dark background"></figure>
+            <figure class="car"><img src="img/bmw-back.jpg" width="1200" height="699" loading="lazy" alt="White BMW sedan, rear three-quarter view, on a dark background"></figure>
+            <figure class="car"><img src="img/ford-side.jpg" width="1200" height="546" loading="lazy" alt="White Ford Raptor pickup truck, side view, on a dark background"></figure>
           </div>
-        </details>
+          <p class="note"><span class="todo">[TODO: accurate description of how the visuals were made]</span></p>
 
-        <figure class="sms">
-          <p class="sms__bar"><span>MESSAGE</span><span>BOULDER AUTO DETAIL</span></p>
-          <blockquote class="bubble">That’s amazing. SEO is a lot to understand and implement a good strategy correctly.</blockquote>
-          <figcaption class="sms__who">Boulder Auto Detail</figcaption>
-        </figure>
+          <p class="label">The rebuilt site</p>
+          <div class="strip">
+            <figure><img src="img/boulder-site-1.jpg" width="1400" height="667" loading="lazy" alt="Boulder Auto Detail homepage hero with the headline Your Car, Held to a Higher Standard over a close-up of a car's taillight"></figure>
+            <figure><img src="img/boulder-site-3.jpg" width="1400" height="752" loading="lazy" alt="Boulder Auto Detail Areas We Serve section above a green panel reading Every Driver, One Standard with vehicle brand logos"></figure>
+            <figure><img src="img/boulder-site-5.jpg" width="1400" height="617" loading="lazy" alt="Boulder Auto Detail Choose Your Service cards for window tint, paint protection film, and ceramic coating"></figure>
+          </div>
+
+          <details class="doc">
+            <summary>SEO roadmap</summary>
+            <div class="doc__body">
+              <p class="note"><span class="todo">[TODO: PDF not added yet]</span></p>
+            </div>
+          </details>
+
+          <figure class="msg">
+            <blockquote class="bubble"><span class="todo">[TODO: quote from screenshots]</span></blockquote>
+            <figcaption>Boulder Auto Detail</figcaption>
+          </figure>
+        </article>
       </div>
     </section>
 
-    <!-- SEC. 05 CRM SYSTEMS (content.md > CRM SYSTEMS) -->
-    <section class="sec" id="crm" data-group="work">
+    <!-- 5. REALTOR PIPELINE (content.md > WORK) -->
+    <section class="sec" id="pipeline" data-group="projects">
       <div class="wrap">
-        <p class="tag">SEC. 05 / 11</p>
-        <h2>Realtor pipeline</h2>
-        <p class="sub">Built at eXp Realty, 2024-2025</p>
+        <article class="card reveal">
+          <h2>Realtor pipeline</h2>
+          <p class="label">eXp Realty</p>
 
-        <ol class="pipe" data-pipe>
-          <li class="pipe__stage" style="--i:0"><span class="pipe__node"></span><span class="pipe__label"><span class="pipe__n">01</span> Lead capture</span></li>
-          <li class="pipe__stage" style="--i:1"><span class="pipe__node"></span><span class="pipe__label"><span class="pipe__n">02</span> Profile</span></li>
-          <li class="pipe__stage" style="--i:2"><span class="pipe__node"></span><span class="pipe__label"><span class="pipe__n">03</span> Weekly follow-up</span></li>
-          <li class="pipe__stage" style="--i:3"><span class="pipe__node"></span><span class="pipe__label"><span class="pipe__n">04</span> Walkthrough</span></li>
-          <li class="pipe__stage" style="--i:4"><span class="pipe__node"></span><span class="pipe__label"><span class="pipe__n">05</span> Closed</span></li>
-          <li class="pipe__dot" aria-hidden="true"></li>
-        </ol>
+          <ol class="pipe" data-pipe>
+            <li class="pipe__stage" style="--i:0"><span class="pipe__node"></span><span class="pipe__label"><span class="pipe__n">01</span> Lead capture</span></li>
+            <li class="pipe__stage" style="--i:1"><span class="pipe__node"></span><span class="pipe__label"><span class="pipe__n">02</span> Profile</span></li>
+            <li class="pipe__stage" style="--i:2"><span class="pipe__node"></span><span class="pipe__label"><span class="pipe__n">03</span> Weekly follow-up</span></li>
+            <li class="pipe__stage" style="--i:3"><span class="pipe__node"></span><span class="pipe__label"><span class="pipe__n">04</span> Walkthrough</span></li>
+            <li class="pipe__stage" style="--i:4"><span class="pipe__node"></span><span class="pipe__label"><span class="pipe__n">05</span> Closed</span></li>
+            <li class="pipe__dot" aria-hidden="true"></li>
+          </ol>
 
-        <p class="prose">Built in Go High Level for the realtors I supported alongside my sales role. Instagram leads came in, were profiled by preference, received personalized automated weekly texts, booked walkthroughs, and were tracked through to closed sale. Supported roughly 40-50 clients a year.</p>
+          <p class="prose">Built in Go High Level for the realtors I supported: Instagram leads were profiled by preference, got personalized automated weekly texts, booked walkthroughs, and were tracked through to closed sale. Supported roughly 40-50 clients a year.</p>
+        </article>
       </div>
     </section>
 
-    <!-- SEC. 06 WHOP (content.md > WHOP) -->
+    <!-- 6. WHOP (content.md > WHOP) -->
     <section class="sec" id="whop" data-group="whop">
       <div class="wrap">
-        <p class="tag">SEC. 06 / 11</p>
-        <h2>Whop</h2>
+        <h2 class="reveal">Whop</h2>
 
-        <ul class="metrics">
+        <ul class="metrics reveal">
           <li><b>400-700</b><span>conversations a week</span></li>
           <li><b>95%</b><span>CSAT</span></li>
           <li><b>20<small>-second</small></b><span>first response</span></li>
@@ -204,198 +190,208 @@
           <li><b>250-800</b><span>risk reviews a day</span></li>
         </ul>
 
-        <div class="systems">
+        <div class="systems card reveal">
           <div class="link" aria-hidden="true">
             <span class="box">Slack</span>
             <span class="wire"></span>
             <span class="box">Intercom</span>
           </div>
-          <p class="prose">Designed a Slack-to-Intercom ticket link that posts internal Slack thread updates to the customer's Intercom ticket, closing a tracking gap between support and internal teams. Built SOPs for a support team with little formal training, and trained teammates on them.</p>
+          <p class="prose">Designed a Slack-to-Intercom ticket link that posts internal Slack thread updates to the customer's Intercom ticket, closing a tracking gap between support and internal teams.</p>
         </div>
 
-        <div class="incident">
-          <p class="label">Incident</p>
-          <p class="prose">Caught an account takeover on a creator account, with attempted crypto withdrawals, while Trust &amp; Safety was offline. Escalated it directly to Security leadership. Whop later shipped sign-out-of-all-devices and login alerts.</p>
+        <div class="duo reveal">
+          <div class="card">
+            <p class="label">SOPs</p>
+            <p>Built SOPs for a support team with little formal training, and trained teammates on them.</p>
+          </div>
+          <div class="card card--incident">
+            <p class="label">Incident</p>
+            <p>Caught an account takeover on a creator account, with attempted crypto withdrawals, while Trust &amp; Safety was offline. Escalated it directly to Security leadership. Whop later shipped sign-out-of-all-devices and login alerts.</p>
+          </div>
         </div>
 
-        <div class="fine">
-          <p>Worked with account managers and customer success on merchants doing $20K to $5M in GMV, and escalated merchant issues directly with Stripe, Klarna, Splitit, Coinflow, Rain, and MassPay.</p>
-          <p>Verified KYC and KYB documents for merchant accounts.</p>
-        </div>
+        <p class="fine reveal">Worked with account managers and customer success on merchants doing $20K to $5M in GMV, and escalated merchant issues directly with Stripe, Klarna, Splitit, Coinflow, Rain, and MassPay. Verified KYC and KYB documents for merchant accounts.</p>
       </div>
     </section>
 
-    <!-- SEC. 07 AMPHS AI (content.md > AMPHS AI) -->
-    <section class="sec" id="amphs" data-group="work">
+    <!-- 7. AMPHS AI (content.md > WORK) -->
+    <section class="sec" id="amphs" data-group="projects">
       <div class="wrap">
-        <p class="tag">SEC. 07 / 11</p>
-        <h2>Amphs AI</h2>
-        <p class="lead">Advisory on Meta ad strategy and content direction for a high-ticket coaching program client.</p>
+        <h2 class="reveal">Amphs AI</h2>
+        <p class="lead reveal">Advisory on Meta ad strategy and content direction for a high-ticket coaching program client.</p>
 
-        <div class="trio">
-          <figure class="sms">
-            <p class="sms__bar"><span>MESSAGE</span><span>AMPHS AI</span></p>
-            <blockquote class="bubble">thank you i appreciate it ur the boss bro</blockquote>
-            <figcaption class="sms__who">Amphs AI</figcaption>
+        <div class="trio reveal">
+          <figure class="msg">
+            <blockquote class="bubble"><span class="todo">[TODO: quote 1 of 2 from screenshots]</span></blockquote>
+            <figcaption>Amphs AI</figcaption>
           </figure>
-          <figure class="sms">
-            <p class="sms__bar"><span>MESSAGE</span><span>AMPHS AI</span></p>
-            <blockquote class="bubble">this is good</blockquote>
-            <figcaption class="sms__who">Amphs AI</figcaption>
+          <figure class="msg">
+            <blockquote class="bubble"><span class="todo">[TODO: quote 2 of 2 from screenshots]</span></blockquote>
+            <figcaption>Amphs AI</figcaption>
           </figure>
 
           <figure class="chart">
-            <p class="chart__flag"><b>ILLUSTRATIVE</b><span>NOT CLIENT DATA</span></p>
-            <svg viewBox="0 0 320 148" role="img" aria-label="Illustrative bar chart with six bars rising from left to right. Not client data.">
-              <defs>
-                <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-                  <path d="M0 0V6" stroke="#4C7DFF" stroke-width="1"/>
-                </pattern>
-              </defs>
-              <path d="M24 8V140H312" fill="none" stroke="#A0A0A8" stroke-width="1.5"/>
-              <g fill="url(#hatch)" stroke="#4C7DFF" stroke-width="1.5">
-                <rect x="40"  y="116" width="28" height="24"/>
-                <rect x="82"  y="104" width="28" height="36"/>
-                <rect x="124" y="84"  width="28" height="56"/>
-                <rect x="166" y="92"  width="28" height="48"/>
-                <rect x="208" y="58"  width="28" height="82"/>
-                <rect x="250" y="34"  width="28" height="106"/>
+            <p class="chart__flag"><b>Illustrative</b><span>Not client data</span></p>
+            <svg viewBox="0 0 320 150" role="img" aria-label="Illustrative bar chart with six bars rising from left to right. Not client data.">
+              <path d="M24 8V138H312" fill="none" stroke="#A9B3A6" stroke-width="1.5" stroke-linecap="round"/>
+              <g fill="#3E5C45" stroke="#8DB08A" stroke-width="1.5">
+                <rect x="40"  y="114" width="28" height="24" rx="5"/>
+                <rect x="82"  y="102" width="28" height="36" rx="5"/>
+                <rect x="124" y="82"  width="28" height="56" rx="5"/>
+                <rect x="166" y="90"  width="28" height="48" rx="5"/>
+                <rect x="208" y="56"  width="28" height="82" rx="5"/>
+                <rect x="250" y="32"  width="28" height="106" rx="5"/>
               </g>
             </svg>
-            <p class="chart__axis">ARBITRARY UNITS</p>
             <figcaption>Illustrative</figcaption>
           </figure>
         </div>
       </div>
     </section>
 
-    <!-- SEC. 08 SMALLER BRANDS + GALLERY (content.md > SMALLER BRANDS, GALLERY) -->
-    <section class="sec" id="gallery" data-group="work">
+    <!-- 8. GALLERY + SMALLER BRANDS (content.md > GALLERY, WORK). Captions are [TODO], so titles only. Videos load on click. -->
+    <section class="sec" id="gallery" data-group="projects">
       <div class="wrap">
-        <p class="tag">SEC. 08 / 11</p>
-        <h2>Gallery</h2>
-        <p class="lead">Also supported small brands in auto detailing, roofing, landscaping, and med spa through XC Consult.</p>
+        <h2 class="reveal">Gallery</h2>
 
-        <div class="tiles">
+        <div class="tiles reveal">
           <figure class="tile tile--wide">
-            <button type="button" class="tile__btn" data-video="video/arc-digital-intro.mp4" data-title="ARC DIGITAL intro" aria-label="Play ARC DIGITAL intro (video, muted)">
-              <img src="img/arc-digital-intro-poster.jpg" width="640" height="360" loading="lazy" alt="ARC DIGITAL intro, video poster frame"><span class="tile__play" aria-hidden="true"></span>
-            </button>
+            <div class="tile__box">
+              <button type="button" class="tile__btn" data-video="video/arc-digital-intro.mp4" aria-label="Play ARC DIGITAL intro (video, muted)">
+                <img src="img/arc-digital-intro-poster.jpg" width="1280" height="720" loading="lazy" alt="ARC DIGITAL intro, video poster: a blue stylized ARC DIGITAL logo on a pale background"><span class="tile__play" aria-hidden="true"></span>
+              </button>
+            </div>
             <figcaption>ARC DIGITAL intro</figcaption>
           </figure>
           <figure class="tile tile--wide">
-            <button type="button" class="tile__btn" data-video="video/genshin-impact-ad.mp4" data-title="Genshin Impact ad" aria-label="Play Genshin Impact ad (video, muted)">
-              <img src="img/genshin-impact-ad-poster.jpg" width="640" height="360" loading="lazy" alt="Genshin Impact ad, video poster frame"><span class="tile__play" aria-hidden="true"></span>
-            </button>
+            <div class="tile__box">
+              <button type="button" class="tile__btn" data-video="video/genshin-impact-ad.mp4" aria-label="Play Genshin Impact ad (video, muted)">
+                <img src="img/genshin-impact-ad-poster.jpg" width="1280" height="720" loading="lazy" alt="Genshin Impact ad, video poster: an illustrated anime-style character in a circle on a dark background"><span class="tile__play" aria-hidden="true"></span>
+              </button>
+            </div>
             <figcaption>Genshin Impact ad</figcaption>
           </figure>
+          <figure class="tile tile--wide">
+            <div class="tile__box">
+              <button type="button" class="tile__btn" data-video="video/venus-website-backsplash.mp4" aria-label="Play VENUS website backsplash (video, muted)">
+                <img src="img/venus-website-backsplash-poster.jpg" width="1280" height="720" loading="lazy" alt="VENUS website backsplash, video poster: a soft white and gray gradient with a purple edge"><span class="tile__play" aria-hidden="true"></span>
+              </button>
+            </div>
+            <figcaption>VENUS website backsplash</figcaption>
+          </figure>
           <figure class="tile">
-            <button type="button" class="tile__btn" data-video="video/kurtis-promo-preview.mp4" data-title="Kurtis promo preview" aria-label="Play Kurtis promo preview (video, muted)">
-              <img src="img/kurtis-promo-preview-poster.jpg" width="640" height="1138" loading="lazy" alt="Kurtis promo preview, video poster frame"><span class="tile__play" aria-hidden="true"></span>
-            </button>
+            <div class="tile__box">
+              <button type="button" class="tile__btn" data-video="video/kurtis-promo-preview.mp4" aria-label="Play Kurtis promo preview (video, muted)">
+                <img src="img/kurtis-promo-preview-poster.jpg" width="720" height="1280" loading="lazy" alt="Kurtis promo preview, video poster: lined notebook paper with the handwritten word inertia"><span class="tile__play" aria-hidden="true"></span>
+              </button>
+            </div>
             <figcaption>Kurtis promo preview</figcaption>
           </figure>
           <figure class="tile">
-            <button type="button" class="tile__btn" data-video="video/rouri-404-kurtis-promo.mp4" data-title="Rouri 404 Kurtis promo" aria-label="Play Rouri 404 Kurtis promo (video, muted)">
-              <img src="img/rouri-404-kurtis-promo-poster.jpg" width="640" height="640" loading="lazy" alt="Rouri 404 Kurtis promo, video poster frame"><span class="tile__play" aria-hidden="true"></span>
-            </button>
+            <div class="tile__box">
+              <button type="button" class="tile__btn" data-video="video/rouri-404-kurtis-promo.mp4" aria-label="Play Rouri 404 Kurtis promo (video, muted)">
+                <img src="img/rouri-404-kurtis-promo-poster.jpg" width="720" height="720" loading="lazy" alt="Rouri 404 Kurtis promo, video poster: a white line drawing of a face with the words hide'n seek scrawled across the eyes, on a dark textured background with red patterns"><span class="tile__play" aria-hidden="true"></span>
+              </button>
+            </div>
             <figcaption>Rouri 404 Kurtis promo</figcaption>
           </figure>
           <figure class="tile">
-            <img src="img/centipedes-poster.jpg" width="800" height="1200" loading="lazy" alt="Centipedes poster">
+            <div class="tile__box">
+              <img src="img/centipedes-poster.jpg" width="1000" height="1500" loading="lazy" alt="Centipedes poster: green graffiti-style lettering over a collage with a figure sitting on a large boot sole">
+            </div>
             <figcaption>Centipedes poster</figcaption>
           </figure>
           <figure class="tile tile--wide">
-            <button type="button" class="tile__btn" data-video="video/venus-website-backsplash.mp4" data-title="VENUS website backsplash" aria-label="Play VENUS website backsplash (video, muted)">
-              <img src="img/venus-website-backsplash-poster.jpg" width="640" height="360" loading="lazy" alt="VENUS website backsplash, video poster frame"><span class="tile__play" aria-hidden="true"></span>
-            </button>
-            <figcaption>VENUS website backsplash</figcaption>
-          </figure>
-          <figure class="tile tile--wide">
-            <img src="img/rouri-404-logo.jpg" width="960" height="540" loading="lazy" alt="Rouri 404 logo">
+            <div class="tile__box">
+              <img src="img/rouri-404-logo.jpg" width="960" height="540" loading="lazy" alt="Rouri 404 logo: bold pink-red lettering with hearts and stars on a white background">
+            </div>
             <figcaption>Rouri 404 logo</figcaption>
           </figure>
           <figure class="tile">
-            <img src="img/the-eye-within.jpg" width="800" height="800" loading="lazy" alt="The Eye Within">
+            <div class="tile__box">
+              <img src="img/the-eye-within.jpg" width="936" height="936" loading="lazy" alt="The Eye Within: a close-up of an eye in red tones with a glitched, melting texture">
+            </div>
             <figcaption>The Eye Within</figcaption>
           </figure>
         </div>
+
+        <p class="fine reveal">Also supported small brands in auto detailing, roofing, landscaping, and med spa through XC Consult.</p>
       </div>
     </section>
 
-    <!-- SEC. 09 SKILLS AND TOOLS (content.md > SKILLS AND TOOLS) -->
+    <!-- 9. SKILLS (content.md > SKILLS) -->
     <section class="sec" id="skills" data-group="skills">
       <div class="wrap">
-        <p class="tag">SEC. 09 / 11</p>
-        <h2>Skills and tools</h2>
+        <h2 class="reveal">Skills</h2>
 
-        <div class="parts">
-          <section class="part">
-            <h3>Support &amp; Operations <span>QTY 06</span></h3>
-            <ol><li>Intercom</li><li>Zendesk</li><li>Linear</li><li>Notion</li><li>Slack</li><li>Microsoft 365</li></ol>
+        <div class="groups reveal">
+          <section class="group">
+            <h3>Support &amp; Operations</h3>
+            <ul class="chips"><li>Intercom</li><li>Zendesk</li><li>Linear</li><li>Notion</li><li>Slack</li><li>Microsoft 365</li></ul>
           </section>
-          <section class="part">
-            <h3>Payments &amp; Compliance <span>QTY 06</span></h3>
-            <ol><li>Stripe</li><li>Klarna</li><li>Afterpay</li><li>Splitit</li><li>Coinflow</li><li>KYC/KYB review</li></ol>
+          <section class="group">
+            <h3>Payments &amp; Compliance</h3>
+            <ul class="chips"><li>Stripe</li><li>Klarna</li><li>Afterpay</li><li>Splitit</li><li>Coinflow</li><li>KYC/KYB review</li></ul>
           </section>
-          <section class="part">
-            <h3>Web &amp; Creative <span>QTY 07</span></h3>
-            <ol><li>WordPress</li><li>Go High Level</li><li>Meta Ads Manager</li><li>Adobe Creative Cloud</li><li>video editing</li><li>graphic design</li><li>SEO</li></ol>
+          <section class="group">
+            <h3>Web &amp; Creative</h3>
+            <ul class="chips"><li>WordPress</li><li>Go High Level</li><li>Meta Ads Manager</li><li>Adobe Creative Cloud</li><li>video editing</li><li>graphic design</li><li>SEO</li></ul>
           </section>
-          <section class="part">
-            <h3>AI <span>QTY 04</span></h3>
-            <ol><li>Claude</li><li>Claude Code</li><li>Cursor</li><li>Grok</li></ol>
+          <section class="group">
+            <h3>AI</h3>
+            <ul class="chips"><li>Claude</li><li>Claude Code</li><li>Cursor</li><li>Grok</li></ul>
           </section>
         </div>
       </div>
     </section>
 
-    <!-- SEC. 10 TESTIMONIALS (content.md > TESTIMONIALS). Quotes not yet picked, so placeholders. -->
-    <section class="sec" id="testimonials" data-group="contact">
+    <!-- 10. TESTIMONIALS (content.md > TESTIMONIALS). Placeholders until quotes are chosen. -->
+    <section class="sec" id="testimonials" data-group="">
       <div class="wrap">
-        <p class="tag">SEC. 10 / 11</p>
-        <h2>Testimonials</h2>
-        <div class="trio trio--two">
-          <figure class="sms">
-            <p class="sms__bar"><span>MESSAGE</span><span>EXP REALTY</span></p>
-            <blockquote class="bubble">I love the setup. My team is having a blast just going through clients. Way to go!</blockquote>
-            <figcaption class="sms__who">eXp Realty</figcaption>
+        <h2 class="reveal">Testimonials</h2>
+        <div class="trio trio--two reveal">
+          <figure class="msg">
+            <blockquote class="bubble"><span class="todo">[TODO: from screenshots]</span></blockquote>
+            <figcaption>eXp Realty</figcaption>
           </figure>
-          <figure class="sms">
-            <p class="sms__bar"><span>MESSAGE</span><span>EXP REALTY</span></p>
-            <blockquote class="bubble">It’s smooth, I truly appreciate all your help Gage.</blockquote>
-            <figcaption class="sms__who">eXp Realty</figcaption>
+          <figure class="msg">
+            <blockquote class="bubble"><span class="todo">[TODO: from screenshots]</span></blockquote>
+            <figcaption>eXp Realty</figcaption>
           </figure>
         </div>
       </div>
     </section>
 
-    <!-- SEC. 11 CLOSING (content.md > CLOSING, EMAIL, LOCATION, LINKEDIN) -->
-    <section class="sec" id="closing" data-group="contact">
+    <!-- 11. CONTACT (content.md > CONTACT, EMAIL, LINKEDIN) -->
+    <section class="sec" id="contact" data-group="contact">
       <div class="wrap">
-        <p class="tag">SEC. 11 / 11</p>
-        <p class="closing__line">Looking for a customer success, account management, or operations role where I can build systems, not just follow them.</p>
+        <h2 class="reveal">Contact</h2>
+        <p class="closing__line reveal">Looking for a customer success, account management, or operations role where I can build systems, not just follow them.</p>
 
-        <dl class="closing__meta">
-          <div><dt>Availability</dt><dd>Remote, hybrid, or in-person</dd></div>
-          <div><dt>Location</dt><dd>Broomfield, CO</dd></div>
-        </dl>
+        <p class="closing__avail reveal"><span class="label">Availability</span> Remote, hybrid, or in-person</p>
 
-        <p class="closing__links">
+        <p class="closing__links reveal">
           <a class="btn btn--solid" href="Gage-Dunn-Resume.pdf" download>Download resume (PDF)</a>
-          <a class="btn" href="mailto:gagecdunn@gmail.com">gagecdunn@gmail.com</a>
+          <a class="btn" href="mailto:gagecdunn@gmail.com">Email me</a>
           <a class="btn" href="https://www.linkedin.com/in/gage-dunn-a282a0390/" rel="noopener">LinkedIn</a>
         </p>
 
-        <p class="closing__refs">References available upon request.</p>
+        <p class="closing__refs reveal">References available upon request.</p>
       </div>
     </section>
 
   </main>
 
+  <footer class="foot">
+    <div class="wrap foot__in">
+      <span>Gage Dunn</span>
+      <span>2026</span>
+    </div>
+  </footer>
+
   <!-- Click-to-enlarge viewer for the How I think images. Click anywhere or press Esc to close. -->
   <dialog class="zoom" data-zoom-dialog aria-label="Enlarged image">
-    <button type="button" class="zoom__close">Close [Esc]</button>
+    <button type="button" class="zoom__close">Close</button>
     <img src="" alt="">
   </dialog>
 
