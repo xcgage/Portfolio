@@ -137,5 +137,21 @@
     });
   });
 
+  // How I think: click an image to enlarge it in a dialog. Click anywhere in the dialog, or press Esc, to close.
+  var zoom = document.querySelector('[data-zoom-dialog]');
+  if (zoom) {
+    var zoomImg = zoom.querySelector('img');
+    document.querySelectorAll('[data-zoom]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        zoomImg.src = btn.getAttribute('data-zoom');
+        zoomImg.alt = btn.getAttribute('data-alt');
+        if (zoom.showModal) { zoom.showModal(); } else { zoom.setAttribute('open', ''); }
+      });
+    });
+    zoom.addEventListener('click', function () {
+      if (zoom.close) { zoom.close(); } else { zoom.removeAttribute('open'); }
+    });
+  }
+
   onResize();
 })();

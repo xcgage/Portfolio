@@ -72,11 +72,8 @@
           <div class="photo__frame">
             <img src="img/me.jpg" width="900" height="1125" loading="lazy"
                  alt="Portrait of Gage Dunn in glasses and a pinstripe suit, holding a black coffee cup">
-            <span class="photo__grid"></span>
-            <span class="tick tick--tl"></span><span class="tick tick--tr"></span>
-            <span class="tick tick--bl"></span><span class="tick tick--br"></span>
           </div>
-          <figcaption>FIG. 01 / PORTRAIT / 900 &times; 1125 PX</figcaption>
+          <figcaption>FIG. 01 / PORTRAIT</figcaption>
         </figure>
 
         <div class="bio__body">
@@ -103,16 +100,26 @@
       <section class="sec think" id="how-i-think">
         <p class="sheet">SEC. 03 / 11</p>
         <h2 class="sec__title snapin">How I think</h2>
-        <p class="think__lead">Same brief, two executions.</p>
+        <p class="think__lead">Same brief, two executions. Concept work.</p>
 
         <div class="panels">
           <figure class="panel panel--generic">
-            <p class="panel__label">GENERIC</p>
-            <div class="panel__box"><span class="todo">[TODO: weak piece]</span></div>
+            <p class="panel__label"><span>GENERIC</span><span class="panel__hint">CLICK TO ENLARGE</span></p>
+            <button type="button" class="panel__open" data-zoom="img/how-i-think-generic.jpg"
+                    data-alt="Generic AI SEO ad: bright blue sky, a thumbs-up robot, stacks of cash, a red starburst and a red Click here to dominate search button"
+                    aria-label="Enlarge the generic ad">
+              <img src="img/how-i-think-generic.jpg" width="1254" height="1254" loading="lazy"
+                   alt="Generic AI SEO ad: bright blue sky, a thumbs-up robot, stacks of cash, a red starburst and a red Click here to dominate search button">
+            </button>
           </figure>
           <figure class="panel panel--intentional">
-            <p class="panel__label">INTENTIONAL</p>
-            <div class="panel__box"><span class="todo">[TODO: strong piece]</span></div>
+            <p class="panel__label"><span>INTENTIONAL</span><span class="panel__hint">CLICK TO ENLARGE</span></p>
+            <button type="button" class="panel__open" data-zoom="img/how-i-think-intentional.jpg"
+                    data-alt="Intentional SEO ad: a hiker on a mountain ridge at sunset above the clouds, with the headline Get Found. Stay Ahead."
+                    aria-label="Enlarge the intentional ad">
+              <img src="img/how-i-think-intentional.jpg" width="1024" height="1024" loading="lazy"
+                   alt="Intentional SEO ad: a hiker on a mountain ridge at sunset above the clouds, with the headline Get Found. Stay Ahead.">
+            </button>
           </figure>
         </div>
 
@@ -249,7 +256,7 @@
 
         <figure class="chart">
           <p class="chart__flag">ILLUSTRATIVE <span>NOT CLIENT DATA</span></p>
-          <svg viewBox="0 0 320 160" role="img" aria-label="Illustrative bar chart with six bars rising from left to right. Not client data.">
+          <svg viewBox="0 0 320 148" role="img" aria-label="Illustrative bar chart with six bars rising from left to right. Not client data.">
             <defs>
               <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
                 <path d="M0 0V6" stroke="#0a2cff" stroke-width="1"/>
@@ -264,8 +271,8 @@
               <rect x="208" y="58"  width="28" height="82"/>
               <rect x="250" y="34"  width="28" height="106"/>
             </g>
-            <text x="24" y="156" font-family="monospace" font-size="8" fill="#000">ARBITRARY UNITS</text>
           </svg>
+          <p class="chart__axis">ARBITRARY UNITS</p>
           <figcaption>Illustrative</figcaption>
         </figure>
       </section>
@@ -391,8 +398,14 @@
     </main>
   </div>
 
-  <!-- Live scroll position, bottom-right -->
+  <!-- Live scroll position, in the top ruler -->
   <div class="readout" aria-hidden="true">Y <span data-readout>0000</span></div>
+
+  <!-- Click-to-enlarge viewer for the How I think images. Click anywhere or press Esc to close. -->
+  <dialog class="zoom" data-zoom-dialog aria-label="Enlarged image">
+    <button type="button" class="zoom__close">Close [Esc]</button>
+    <img src="" alt="">
+  </dialog>
 
 </body>
 </html>

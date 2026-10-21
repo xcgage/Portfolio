@@ -8,12 +8,13 @@
   --ink: #000;
   --paper: #fff;
   --blue: #0a2cff;                 /* the ONLY accent colour */
-  --rule: rgba(0, 0, 0, 0.18);     /* thin grid lines */
+  --rule: rgba(0, 0, 0, 0.12);     /* thin grid lines */
   --quiet: rgba(0, 0, 0, 0.7);     /* quiet text */
   --ruler: 44px;                   /* width of left ruler */
   --top: 28px;                     /* height of top ruler */
   --cols: 6;
   --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --display: "Arial Black", "Helvetica Neue", Arial, sans-serif;
 }
 
@@ -30,9 +31,9 @@ body {
   padding-top: var(--top);   /* room for the fixed top ruler */
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--mono);
-  font-size: 14px;
-  line-height: 1.5;
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
 }
 
 p, figure, blockquote, dl, dd, ol, ul { margin: 0; }
@@ -89,7 +90,7 @@ html.js .snapin.is-in { visibility: visible; }
   left: var(--ruler);
   right: 0;
   pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='100'%3E%3Cpath d='M0 .5H8' stroke='black' stroke-opacity='.18'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='100'%3E%3Cpath d='M0 .5H8' stroke='black' stroke-opacity='.12'/%3E%3C/svg%3E");
 }
 
 .page {
@@ -111,15 +112,16 @@ html.js .snapin.is-in { visibility: visible; }
   display: flex;
   background: var(--paper);
   border-bottom: 2px solid var(--ink);
+  font-family: var(--mono);
 }
 
 .ruler-top__corner {
   flex: none;
   width: var(--ruler);
   border-right: 2px solid var(--ink);
-  font-size: 9px;
+  font-size: 12px;
   line-height: 1;
-  padding: 3px 0 0 4px;
+  padding: 5px 0 0 4px;
 }
 
 .ruler-top__scale {
@@ -133,8 +135,8 @@ html.js .snapin.is-in { visibility: visible; }
 
 .ruler-top__scale span {
   position: absolute;
-  top: 3px;
-  font-size: 9px;
+  top: 2px;
+  font-size: 12px;
   line-height: 1;
   transform: translateX(5px);
 }
@@ -151,12 +153,13 @@ html.js .snapin.is-in { visibility: visible; }
   background-repeat: repeat-y;
   background-position: right top;
   border-right: 2px solid var(--ink);
+  font-family: var(--mono);
 }
 
 .ruler-left span {
   position: absolute;
-  left: 3px;
-  font-size: 9px;
+  left: 2px;
+  font-size: 12px;
   line-height: 1;
   transform: translateY(4px);
 }
@@ -200,16 +203,22 @@ html.js .line__fill { height: 0; }
 .readout {
   position: fixed;
   right: 0;
-  bottom: 0;
-  z-index: 30;
-  padding: 4px 8px;
+  bottom: auto;
+  z-index: 25;
+  padding: 0 10px;
   background: var(--paper);
   color: var(--blue);
-  border-top: 1px solid var(--blue);
-  border-left: 1px solid var(--blue);
-  font-size: 10px;
+  border-top: 0;
+  border-left: 2px solid var(--blue);
+  font-size: 12px;
   line-height: 1.2;
   letter-spacing: 0.08em;
+  top: 0;
+  height: var(--top);
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid var(--ink);
+  font-family: var(--mono);
 }
 
 /* ==========================================================
@@ -250,12 +259,13 @@ main > section::before {
 .sec > * { grid-column: 2 / -1; margin-left: 14px; min-width: 0; }
 
 .sheet {
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.08em;
+  font-family: var(--mono);
 }
 
 .sec__title {
-  margin: 0;
+  margin: 0 0 0 14px;
   font-family: var(--display);
   font-weight: 900;
   font-size: clamp(3rem, 13vw, 10rem);
@@ -270,15 +280,18 @@ main > section::before {
 
 .label {
   margin: 0;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  font-family: var(--mono);
 }
 
 .todo {
   outline: 1px dashed var(--ink);
   outline-offset: 2px;
+  font-family: var(--mono);
+  font-size: max(12px, 0.85em);
 }
 
 /* ==========================================================
@@ -302,9 +315,10 @@ main > section::before {
 
 .hero__meta {
   grid-column: 2 / -1;
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.6;
   letter-spacing: 0.08em;
+  font-family: var(--mono);
 }
 
 .hero__meta p + p { margin-top: 0.75rem; }
@@ -338,10 +352,11 @@ main > section::before {
   padding: 0 6px;
   background: var(--paper);
   color: var(--blue);
-  font-size: 10px;
+  font-size: 12px;
   line-height: 15px;
   letter-spacing: 0.08em;
   white-space: nowrap;
+  font-family: var(--mono);
 }
 
 .name {
@@ -369,8 +384,8 @@ main > section::before {
 
 .subline {
   margin-top: 1.5rem;
-  max-width: 44ch;
-  font-size: 12px;
+  max-width: 65ch;
+  font-size: 17px;
   line-height: 1.6;
 }
 
@@ -398,7 +413,7 @@ main > section::before {
   position: absolute;
   left: 0;
   right: 38%;
-  top: 17%;
+  top: 2.25rem;
   border-top: 1px solid var(--ink);
   transform: rotate(-0.35deg);
   transform-origin: left center;
@@ -427,65 +442,50 @@ main > section::before {
    Mobile: one column right of the line, photo then text.
    Desktop: title offset right, photo in cols 3-6, text in cols 8-12.
    ========================================================== */
-.bio__sheet { font-size: 10px; }
 
-/* Photo: greyscale, then a flat blue multiply layer and a faint blue grid */
+/* Photo: natural colour, cropped on the face, thick black border, label underneath. No filter, tint or overlay. */
 .photo { max-width: 22rem; }
 
 .photo__frame {
   position: relative;
   isolation: isolate;
-  border: 2px solid var(--ink);
+  border: 4px solid var(--ink);
   background: var(--paper);
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
 }
 
 .photo__frame img {
   width: 100%;
-  filter: grayscale(1) brightness(1.45) contrast(1.05);
+  height: 100%;
+  object-fit: cover;
+  object-position: 55% 42%;
+  transform: scale(1.35);
+  transform-origin: 55% 45%;
 }
 
-.photo__frame::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--blue);
-  mix-blend-mode: multiply;
-  opacity: 0.3;
-  pointer-events: none;
-}
 
-.photo__grid {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Cpath d='M.5 0V48M0 .5H48' stroke='%230a2cff' stroke-opacity='.35' fill='none'/%3E%3C/svg%3E");
-}
 
-/* Crop marks sitting just outside each corner */
-.tick {
-  position: absolute;
-  z-index: 2;
-  width: 14px;
-  height: 14px;
-  border: 0 solid var(--ink);
-}
 
-.tick--tl { left: -10px;  top: -10px;    border-top-width: 1px;    border-left-width: 1px; }
-.tick--tr { right: -10px; top: -10px;    border-top-width: 1px;    border-right-width: 1px; }
-.tick--bl { left: -10px;  bottom: -10px; border-bottom-width: 1px; border-left-width: 1px; }
-.tick--br { right: -10px; bottom: -10px; border-bottom-width: 1px; border-right-width: 1px; }
+
+
+
+
+
+
+
 
 .photo figcaption {
   margin-top: 0.75rem;
   color: var(--blue);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.08em;
+  font-family: var(--mono);
 }
 
 .bio__text {
-  max-width: 56ch;
-  font-size: 15px;
+  max-width: 65ch;
+  font-size: 17px;
   line-height: 1.6;
 }
 
@@ -504,28 +504,30 @@ main > section::before {
 .timeline th {
   padding: 0.35rem 0;
   border-top: 1px solid var(--ink);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 400;
   letter-spacing: 0.08em;
   text-align: left;
   text-transform: uppercase;
+  font-family: var(--mono);
 }
 
 .timeline td {
   padding: 0.6rem 0;
   border-top: 1px solid var(--ink);
   vertical-align: top;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 .timeline tbody tr:last-child td { border-bottom: 1px solid var(--ink); }
 
 .timeline .yrs {
-  width: 8.5rem;
+  width: 9rem;
   padding-right: 1rem;
   font-family: var(--mono);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
+  font-size: 16px;
 }
 
 .timeline strong { display: inline-block; margin-bottom: 0.15rem; }
@@ -536,12 +538,13 @@ main > section::before {
   margin-top: 2rem;
   padding: 0.35rem 0.6rem;
   border: 2px solid var(--ink);
-  color: var(--quiet);
-  font-size: 10px;
+  color: var(--ink);
+  font-size: 12px;
   letter-spacing: 0.1em;
   line-height: 1.4;
   text-transform: uppercase;
   transform: rotate(-1deg);
+  font-family: var(--mono);
 }
 
 @media (min-width: 48em) {
@@ -559,46 +562,90 @@ main > section::before {
    Two panels side by side. Generic = thin border. Intentional = thick border + blue frame.
    ========================================================== */
 .think__lead {
-  font-size: 12px;
-  letter-spacing: 0.04em;
+  font-size: 17px;
+  letter-spacing: 0;
 }
 
+/* Two large panels: stacked on mobile, side by side from tablet up */
 .panels {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
 }
 
 .panel__label {
   display: flex;
   justify-content: space-between;
+  gap: 1rem;
   margin-bottom: 0.5rem;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.1em;
+  font-family: var(--mono);
 }
 
-.panel__box {
-  display: grid;
-  place-items: center;
-  aspect-ratio: 4 / 5;
-  padding: 0.5rem;
-  border: 1px solid var(--ink);
-  background: var(--paper);
-  text-align: center;
-  font-size: 11px;
+.panel__label span:first-child { font-weight: 700; }
+
+.panel__open {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 4px solid var(--ink);
+  background: var(--ink);
+  cursor: zoom-in;
 }
+
+.panel__open img { width: 100%; height: auto; }
 
 .panel--intentional .panel__label { color: var(--blue); }
 
-.panel--intentional .panel__box {
-  border: 3px solid var(--ink);
-  outline: 1px solid var(--blue);
+.panel--intentional .panel__open {
+  outline: 2px solid var(--blue);
   outline-offset: 5px;
 }
 
+/* Enlarged view: native <dialog>, opens instantly */
+.zoom {
+  max-width: min(96vw, 1100px);
+  max-height: 96vh;
+  padding: 0;
+  border: 4px solid var(--ink);
+  background: var(--paper);
+  overflow: auto;
+}
+
+.zoom::backdrop { background: rgba(0, 0, 0, 0.88); }
+
+.zoom__close {
+  display: block;
+  width: 100%;
+  min-height: 48px;
+  padding: 0 1rem;
+  border: 0;
+  border-bottom: 4px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-align: right;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.zoom img {
+  display: block;
+  width: 100%;
+  max-height: calc(96vh - 60px);
+  object-fit: contain;
+  background: var(--ink);
+  cursor: zoom-out;
+}
+
 .think__caption {
-  font-size: 11px;
-  letter-spacing: 0.06em;
+  font-size: 17px;
+  letter-spacing: 0;
+  max-width: 65ch;
 }
 
 @media (min-width: 48em) {
@@ -606,23 +653,24 @@ main > section::before {
 
   .think .sheet       { grid-column: 2 / -1; }
   .think .sec__title  { grid-column: 2 / -1; }
-  .think__lead        { grid-column: 2 / 4;  grid-row: 3; align-self: start; }
-  .panels             { grid-column: 4 / 12; grid-row: 3; }
-  .think__caption     { grid-column: 4 / 12; grid-row: 4; }
+  .think__lead        { grid-column: 2 / -1; grid-row: 3; }
+  .panels             { grid-column: 3 / -1; grid-row: 4; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .think__caption     { grid-column: 3 / -1; grid-row: 5; }
 }
 
 /* ==========================================================
    04 BOULDER AUTO DETAIL (flagship)
    ========================================================== */
 .boulder__sub {
-  font-size: 10px;
+  font-size: 14px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  font-family: var(--mono);
 }
 
 .boulder__copy {
-  max-width: 62ch;
-  font-size: 15px;
+  max-width: 65ch;
+  font-size: 17px;
   line-height: 1.6;
 }
 
@@ -670,8 +718,10 @@ main > section::before {
   justify-content: space-between;
   gap: 0.5rem;
   padding: 5px 0 7px;
-  font-size: 9px;
-  letter-spacing: 0.08em;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  font-family: var(--mono);
+  flex-wrap: wrap;
 }
 
 .pin--1 { grid-column: 1 / -1; transform: rotate(-1.6deg); }
@@ -679,7 +729,9 @@ main > section::before {
 .pin--3 { transform: rotate(-1deg); }
 .pin--4 { transform: rotate(1.8deg); }
 
-.boulder__cap { font-size: 11px; }
+.boulder__cap { font-size: 14px;
+  font-family: var(--mono);
+}
 
 @media (min-width: 48em) {
   .pins { grid-template-columns: repeat(6, 1fr); gap: 2.25rem 1.5rem; }
@@ -705,8 +757,9 @@ main > section::before {
 .strip figcaption {
   padding: 3px 4px;
   border-top: 1px solid var(--ink);
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 0.08em;
+  font-family: var(--mono);
 }
 
 /* Expandable SEO roadmap viewer. details = native, opens instantly */
@@ -728,7 +781,9 @@ main > section::before {
 .doc summary::-webkit-details-marker { display: none; }
 .doc summary:hover { background: var(--ink); color: var(--paper); }
 
-.doc__hint { font-size: 10px; font-weight: 400; }
+.doc__hint { font-size: 12px; font-weight: 400;
+  font-family: var(--mono);
+}
 .doc[open] .doc__hint { visibility: hidden; }
 
 .doc__viewer { border-top: 1px solid var(--ink); }
@@ -739,8 +794,9 @@ main > section::before {
   gap: 1rem;
   padding: 0.4rem 1rem;
   border-bottom: 1px solid var(--ink);
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 0.08em;
+  font-family: var(--mono);
 }
 
 .doc__page {
@@ -753,7 +809,7 @@ main > section::before {
   border: 1px solid var(--ink);
   text-align: center;
   padding: 1rem;
-  font-size: 11px;
+  font-size: 14px;
 }
 
 .doc__page iframe { width: 100%; height: 100%; border: 0; }
@@ -773,8 +829,9 @@ main > section::before {
   margin-bottom: 1rem;
   padding-bottom: 0.4rem;
   border-bottom: 1px solid var(--ink);
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 0.08em;
+  font-family: var(--mono);
 }
 
 .bubble {
@@ -802,8 +859,9 @@ main > section::before {
 
 .sms__who {
   padding-left: 0.25rem;
-  font-size: 10px;
+  font-size: 14px;
   letter-spacing: 0.06em;
+  font-family: var(--mono);
 }
 
 /* ==========================================================
@@ -812,9 +870,10 @@ main > section::before {
    Mobile: vertical. Desktop: horizontal.
    ========================================================== */
 .crm__sub {
-  font-size: 10px;
+  font-size: 14px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  font-family: var(--mono);
 }
 
 .pipe {
@@ -854,11 +913,13 @@ main > section::before {
 }
 
 .pipe__label {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   white-space: nowrap;
+  font-family: var(--mono);
+  background: var(--paper);
 }
 
 .pipe__n { font-weight: 400; margin-right: 0.35rem; }
@@ -878,8 +939,8 @@ main > section::before {
 }
 
 .crm__copy {
-  max-width: 52ch;
-  font-size: 14px;
+  max-width: 65ch;
+  font-size: 17px;
   line-height: 1.6;
 }
 
@@ -895,15 +956,22 @@ main > section::before {
     width: 15px;
   }
 
+  /* Labels hang under their node. Each is capped to the gap between nodes, so they wrap instead of colliding. */
+  .pipe { container-type: inline-size; }
+
   .pipe__label {
     position: absolute;
     top: 28px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    width: max-content;
+    max-width: calc((100cqw - 15px) / 4 - 12px);
+    text-align: left;
+    white-space: normal;
   }
 
-  .pipe__stage:first-child .pipe__label { left: 0; transform: none; }
-  .pipe__stage:nth-child(5) .pipe__label { left: auto; right: 0; transform: none; }
+  .pipe__n { display: block; margin: 0 0 0.15rem; }
+
+  .pipe__stage:nth-child(5) .pipe__label { left: auto; right: 0; text-align: right; }
 
   .pipe__dot {
     left: calc(var(--p) * (100% - 15px) - 3px);
@@ -945,12 +1013,13 @@ main > section::before {
   white-space: nowrap;
 }
 
-.metrics small { font-size: 0.4em; letter-spacing: 0; font-weight: 400; }
+.metrics small { font-size: max(12px, 0.4em); letter-spacing: 0; font-weight: 400; }
 
 .metrics span {
-  font-size: 10px;
+  font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  font-family: var(--mono);
 }
 
 @media (min-width: 48em) {
@@ -980,6 +1049,8 @@ main > section::before {
   letter-spacing: 0.06em;
   text-align: center;
   text-transform: uppercase;
+  font-family: var(--mono);
+  font-size: 14px;
 }
 
 .wire {
@@ -1017,8 +1088,8 @@ main > section::before {
 }
 
 .systems__copy {
-  max-width: 52ch;
-  font-size: 14px;
+  max-width: 65ch;
+  font-size: 17px;
   line-height: 1.6;
 }
 
@@ -1036,8 +1107,8 @@ main > section::before {
 .incident .label { margin-bottom: 0.5rem; color: var(--blue); }
 
 .fine {
-  max-width: 62ch;
-  font-size: 12px;
+  max-width: 65ch;
+  font-size: 17px;
   line-height: 1.6;
 }
 
@@ -1047,8 +1118,8 @@ main > section::before {
    07 AMPHS AI
    ========================================================== */
 .amphs__copy {
-  max-width: 52ch;
-  font-size: 15px;
+  max-width: 65ch;
+  font-size: 17px;
   line-height: 1.6;
 }
 
@@ -1073,19 +1144,28 @@ main > section::before {
   color: var(--paper);
   font-weight: 700;
   letter-spacing: 0.12em;
+  font-family: var(--mono);
 }
 
-.chart__flag span { font-size: 10px; font-weight: 400; letter-spacing: 0.1em; }
+.chart__flag span { font-size: 12px; font-weight: 400; letter-spacing: 0.1em; }
 
-.chart svg { display: block; width: 100%; height: auto; padding: 0.75rem; }
+.chart svg { display: block; width: 100%; height: auto; padding: 0.75rem 0.75rem 0; }
+
+.chart__axis {
+  padding: 0.25rem 0.75rem 0.6rem;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
 
 .chart figcaption {
   padding: 0.4rem 0.75rem;
   border-top: 1px solid var(--blue);
   color: var(--blue);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  font-family: var(--mono);
 }
 
 @media (min-width: 48em) {
@@ -1099,10 +1179,10 @@ main > section::before {
    Tight grid, sharp edges, 1px gaps. Hover (or focus) shows the title as a small caption.
    ========================================================== */
 .brands {
-  max-width: 52ch;
+  max-width: 65ch;
   padding-top: 0.75rem;
   border-top: 1px solid var(--ink);
-  font-size: 12px;
+  font-size: 17px;
   line-height: 1.6;
 }
 
@@ -1171,10 +1251,12 @@ main > section::before {
   padding: 4px 8px;
   background: var(--ink);
   color: var(--paper);
-  font-size: 10px;
-  letter-spacing: 0.08em;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  overflow-wrap: anywhere;
   pointer-events: none;
   visibility: hidden;
+  font-family: var(--mono);
 }
 
 .tile:hover figcaption,
@@ -1210,12 +1292,13 @@ main > section::before {
   padding: 0.5rem 0;
   border-top: 2px solid var(--ink);
   border-bottom: 1px solid var(--ink);
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  font-family: var(--mono);
 }
 
-.part h3 span { font-weight: 400; font-size: 10px; letter-spacing: 0.1em; }
+.part h3 span { font-weight: 400; font-size: 12px; letter-spacing: 0.1em; }
 
 .part ol { counter-reset: item; }
 
@@ -1232,8 +1315,9 @@ main > section::before {
   flex: none;
   width: 1.75rem;
   color: var(--quiet);
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.9;
+  font-family: var(--mono);
 }
 
 @media (min-width: 48em) {
@@ -1243,7 +1327,9 @@ main > section::before {
 /* ==========================================================
    10 TESTIMONIALS
    ========================================================== */
-.quotes__note { font-size: 11px; }
+.quotes__note { font-size: 14px;
+  font-family: var(--mono);
+}
 
 .quotes__list {
   display: grid;
@@ -1273,9 +1359,10 @@ main > section::before {
 .closing__meta { display: grid; gap: 0.9rem; }
 
 .closing__meta dt {
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  font-family: var(--mono);
 }
 
 .closing__links {
@@ -1301,7 +1388,7 @@ main > section::before {
 
 .btn:hover { background: var(--blue); border-color: var(--blue); color: var(--paper); }
 
-.closing__refs { font-size: 11px; color: var(--quiet); }
+.closing__refs { font-size: 17px; color: var(--ink); }
 
 @media (min-width: 48em) {
   .closing__line  { grid-column: 4 / -1; }
@@ -1310,6 +1397,13 @@ main > section::before {
   .closing__refs  { grid-column: 4 / -1; }
 }
 
+/* ==========================================================
+   READABILITY
+   Text sits on paper so grid lines and ticks never run through it.
+   (Colored blocks set their own background and win over this.)
+   ========================================================== */
+main :is(p, li, dt, dd, th, td, caption, figcaption, summary) { background: var(--paper); }
+.pipe__stage, .pipe__dot { background: transparent; }
 /* ==========================================================
    Reduced motion: no snap-in, no blink, line fully drawn, pipeline dot parked at the end
    ========================================================== */
