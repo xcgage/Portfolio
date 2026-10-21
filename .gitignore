@@ -1,0 +1,16 @@
+# Not part of the deployed site
+
+# Originals (large, and the testimonial screenshots show private chats)
+assets/
+
+# Working notes
+testimonials-draft.md
+CLAUDE.md
+content.md
+
+# Tooling and OS files
+.claude/
+.vercel/
+*.ps1
+Thumbs.db
+.DS_Store
