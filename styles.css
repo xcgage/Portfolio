@@ -484,6 +484,18 @@ h3 { font-size: 20px; line-height: 1.3; }
   .strip figure { flex: var(--ar) 1 0; min-width: 0; }
 }
 
+/* ==========================================================
+   5. REALTOR PIPELINE: five steps, a soft dot that loops through them on its own.
+   script.js loops --p (0 to 1) on .pipe and adds .is-lit to stages.
+   Phones: vertical. Desktop: left to right.
+   ========================================================== */
+.pipe {
+  --p: 0;
+  --n: 20px;
+  position: relative;
+  height: 14rem;
+}
+
 .pipe::before {
   content: "";
   position: absolute;
