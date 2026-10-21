@@ -1,61 +1,36 @@
 (function () {
   'use strict';
 
-  var page = document.querySelector('[data-page]');
-  var fill = document.querySelector('[data-line]');
-  var scaleX = document.querySelector('[data-scale-x]');
-  var scaleY = document.querySelector('[data-scale-y]');
-  var readout = document.querySelector('[data-readout]');
-  var dim = document.querySelector('[data-dim]');
-  var namewrap = document.querySelector('.namewrap');
-  var pipe = document.querySelector('[data-pipe]');
-  var stages = pipe ? pipe.querySelectorAll('.pipe__stage') : [];
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
   var queued = false;
 
-  function pad(n) {
-    return ('0000' + n).slice(-4);
-  }
+  // ---- Sticky nav: highlight the link for the section you are in ----
+  // Each section has data-group (about, work, whop, skills, contact); each nav link has data-nav.
+  var links = document.querySelectorAll('.nav [data-nav]');
+  var sections = document.querySelectorAll('main section[data-group]');
+  var navHeight = (document.querySelector('.nav') || {}).offsetHeight || 56;
 
-  // Ruler numbers: one label every 100px. Tick marks themselves are CSS.
-  function buildScale(el, length, axis) {
-    var frag = document.createDocumentFragment();
-    for (var n = 0; n < length; n += 100) {
-      var s = document.createElement('span');
-      s.textContent = pad(n);
-      s.style[axis] = n + 'px';
-      frag.appendChild(s);
+  function highlightNav() {
+    var current = null;
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].getBoundingClientRect().top <= navHeight + 80) {
+        current = sections[i].getAttribute('data-group');
+      }
     }
-    el.textContent = '';
-    el.appendChild(frag);
+    // Hero (above the first grouped section) = nothing highlighted.
+    var atBottom = window.innerHeight + window.pageYOffset >= document.documentElement.scrollHeight - 4;
+    if (atBottom) { current = 'contact'; }
+    links.forEach(function (a) {
+      var on = a.getAttribute('data-nav') === current;
+      a.classList.toggle('is-active', on);
+      if (on) { a.setAttribute('aria-current', 'true'); } else { a.removeAttribute('aria-current'); }
+    });
   }
 
-  // Dimension line over the name shows its real measured width.
-  function measureName() {
-    if (dim && namewrap) {
-      dim.textContent = 'W ' + Math.round(namewrap.offsetWidth) + ' PX';
-    }
-  }
+  // ---- CRM pipeline: the dot (--p) follows the scroll; each stage lights when the dot reaches it ----
+  var pipe = document.querySelector('[data-pipe]');
+  var stages = pipe ? pipe.querySelectorAll('.pipe__stage') : [];
 
-  function buildRulers() {
-    buildScale(scaleX, scaleX.clientWidth, 'left');
-    buildScale(scaleY, page.offsetHeight, 'top');
-    measureName();
-  }
-
-  // Scroll-drawn line: reaches 60% down the viewport, plus up to 40% more as you near
-  // the bottom, so it arrives exactly at the page end. Plain height change, no easing.
-  function drawLine(y) {
-    var h = page.offsetHeight;
-    var vh = window.innerHeight;
-    var max = Math.max(1, document.documentElement.scrollHeight - vh);
-    var progress = Math.min(1, y / max);
-    var top = page.getBoundingClientRect().top;
-    var reach = reduce.matches ? h : Math.min(h, -top + vh * 0.6 + vh * 0.4 * progress);
-    fill.style.height = Math.max(0, reach) + 'px';
-  }
-
-  // CRM pipeline: dot position (--p) follows the scroll. Each stage lights when the dot reaches it.
   function movePipe() {
     if (!pipe) { return; }
     var vh = window.innerHeight;
@@ -72,10 +47,8 @@
 
   function update() {
     queued = false;
-    var y = window.pageYOffset || document.documentElement.scrollTop || 0;
-    drawLine(y);
+    highlightNav();
     movePipe();
-    readout.textContent = pad(Math.round(y));
   }
 
   function queue() {
@@ -85,18 +58,9 @@
     }
   }
 
-  function onResize() {
-    buildRulers();
-    queue();
-  }
-
   window.addEventListener('scroll', queue, { passive: true });
-  window.addEventListener('resize', onResize);
-  window.addEventListener('load', onResize);
-
-  if (window.ResizeObserver) {
-    new ResizeObserver(onResize).observe(page);
-  }
+  window.addEventListener('resize', queue);
+  window.addEventListener('load', queue);
 
   if (reduce.addEventListener) {
     reduce.addEventListener('change', queue);
@@ -104,23 +68,7 @@
     reduce.addListener(queue);
   }
 
-  // Snap-in for section titles: hidden until scrolled into view, then appear at once.
-  var titles = document.querySelectorAll('.snapin');
-  if ('IntersectionObserver' in window && !reduce.matches) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) {
-          e.target.classList.add('is-in');
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    titles.forEach(function (t) { io.observe(t); });
-  } else {
-    titles.forEach(function (t) { t.classList.add('is-in'); });
-  }
-
-  // Gallery videos: the poster is a button. The video is only created (and loaded) on click, muted.
+  // ---- Gallery videos: the poster is a button. The video is only created (and loaded) on click, muted ----
   document.querySelectorAll('[data-video]').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var v = document.createElement('video');
@@ -137,7 +85,7 @@
     });
   });
 
-  // How I think: click an image to enlarge it in a dialog. Click anywhere in the dialog, or press Esc, to close.
+  // ---- How I think: click an image to enlarge it. Click anywhere in the dialog, or press Esc, to close ----
   var zoom = document.querySelector('[data-zoom-dialog]');
   if (zoom) {
     var zoomImg = zoom.querySelector('img');
@@ -153,5 +101,5 @@
     });
   }
 
-  onResize();
+  update();
 })();

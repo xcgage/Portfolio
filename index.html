@@ -3,108 +3,88 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
   <title>Gage Dunn</title>
   <meta name="description" content="I run customer operations and build the systems behind them.">
   <link rel="icon" href="data:,">
-  <script>document.documentElement.className = 'js';</script>
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
 </head>
 <body>
 
-  <!-- FRAME: fixed vertical grid lines (6 columns on mobile, 12 on desktop) -->
-  <div class="grid" aria-hidden="true">
-    <span></span><span></span><span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span><span></span><span></span>
-  </div>
+  <!-- Sticky top nav. script.js highlights the link for the section you are in (data-group on each section). -->
+  <header class="nav">
+    <div class="wrap nav__in">
+      <a class="nav__brand" href="#top">Gage Dunn</a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#bio" data-nav="about">About</a></li>
+          <li><a href="#boulder" data-nav="work">Work</a></li>
+          <li><a href="#whop" data-nav="whop">Whop</a></li>
+          <li><a href="#skills" data-nav="skills">Skills</a></li>
+          <li><a href="#closing" data-nav="contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-  <!-- FRAME: fixed top ruler. Tick marks come from CSS, numbers are added by script.js -->
-  <div class="ruler-top" aria-hidden="true">
-    <div class="ruler-top__corner">PX</div>
-    <div class="ruler-top__scale" data-scale-x></div>
-  </div>
+  <main>
 
-  <div class="page" data-page>
-    <!-- FRAME: horizontal grid lines, left ruler, and the scroll-drawn line -->
-    <div class="hgrid" aria-hidden="true"></div>
-    <div class="ruler-left" aria-hidden="true" data-scale-y></div>
-    <div class="line" aria-hidden="true"><div class="line__fill" data-line></div></div>
+    <!-- SEC. 01 HEADLINE (content.md > NAME, HEADLINE) -->
+    <section class="hero" id="top">
+      <div class="wrap">
+        <p class="tag">SEC. 01 / 11</p>
+        <h1 class="hero__name">Gage Dunn</h1>
+        <p class="hero__tag">I run customer operations and build the <span class="mark">systems</span> behind them.</p>
+        <p class="hero__sub">Customer success, trust &amp; safety, and operations. Open to remote, hybrid, or in-person.</p>
+      </div>
+    </section>
 
-    <main>
+    <!-- SEC. 02 BIO (content.md > BIO, TIMELINE, CREDENTIALS) -->
+    <section class="sec" id="bio" data-group="about">
+      <div class="wrap">
+        <p class="tag">SEC. 02 / 11</p>
+        <h2>Bio</h2>
 
-      <!-- SEC. 01 HEADLINE (copy: content.md > NAME, HEADLINE) -->
-      <section class="hero" id="top">
-        <span class="stray" aria-hidden="true"></span>
-        <span class="reg" aria-hidden="true"></span>
-
-        <div class="hero__meta snap" style="--i:0">
-          <p>SEC. 01 / 11</p>
-          <p>PORTFOLIO</p>
-        </div>
-
-        <div class="hero__title">
-          <div class="namewrap">
-            <div class="dim snap" style="--i:1" aria-hidden="true">
-              <span class="dim__label" data-dim>W</span>
-            </div>
-            <h1 class="name">
-              <span class="snap" style="--i:2">Gage</span>
-              <span class="snap" style="--i:3">Dunn</span>
-            </h1>
-          </div>
-
-          <p class="tagline">
-            <span class="snap" style="--i:5">I run customer operations</span>
-            <span class="snap" style="--i:6">and build the <span class="mark">systems</span></span>
-            <span class="snap" style="--i:7">behind them.</span>
-          </p>
-
-          <p class="subline snap" style="--i:9">Customer success, trust &amp; safety, and operations. Open to remote, hybrid, or in-person.</p>
-        </div>
-      </section>
-
-      <!-- SEC. 02 BIO (copy: content.md > BIO, TIMELINE, CREDENTIALS) -->
-      <section class="sec bio" id="bio">
-        <p class="sheet">SEC. 02 / 11</p>
-        <h2 class="sec__title snapin">Bio</h2>
-
-        <figure class="photo">
-          <div class="photo__frame">
+        <div class="bio">
+          <figure class="photo">
             <img src="img/me.jpg" width="900" height="1125" loading="lazy"
                  alt="Portrait of Gage Dunn in glasses and a pinstripe suit, holding a black coffee cup">
+            <figcaption>FIG. 01 / PORTRAIT</figcaption>
+          </figure>
+
+          <div class="bio__body">
+            <p class="prose">I started in sales and client success. At eXp Realty I sold a $10,000 brand-building course to real estate agents, averaging 6-7 sales a month, and ran weekly check-ins to audit each agent's business and close the gaps. At Floor &amp; Decor I sold more than $300,000 in flooring and ran warehouse inventory audits. At Whop, a payments platform for online businesses, I moved from support into operations and trust &amp; safety: 400-700 customer conversations a week, then 250-800 risk and compliance reviews a day. Since 2022 I've also run XC Consult, a one-person web, design, and SEO practice.</p>
+
+            <table class="timeline">
+              <caption class="label">Timeline</caption>
+              <thead>
+                <tr><th scope="col">Years</th><th scope="col">Role</th></tr>
+              </thead>
+              <tbody>
+                <tr><td class="yrs">2025-2026</td><td><strong>Whop</strong><span>CX Operations, Trust &amp; Safety, Customer Support</span></td></tr>
+                <tr><td class="yrs">2025</td><td><strong>Floor &amp; Decor</strong><span>Sales &amp; Warehouse Associate</span></td></tr>
+                <tr><td class="yrs">2024-2025</td><td><strong>eXp Realty</strong><span>Realty Consultant (Sales &amp; Client Success)</span></td></tr>
+                <tr><td class="yrs">2022-present</td><td><strong>XC Consult</strong><span>Founder &amp; Consultant</span></td></tr>
+              </tbody>
+            </table>
+
+            <p class="stamp">Google IT Support Professional Certificate (Google / Coursera)</p>
           </div>
-          <figcaption>FIG. 01 / PORTRAIT</figcaption>
-        </figure>
-
-        <div class="bio__body">
-          <p class="bio__text">I started in sales and client success. At eXp Realty I sold a $10,000 brand-building course to real estate agents, averaging 6-7 sales a month, and ran weekly check-ins to audit each agent's business and close the gaps. At Floor &amp; Decor I sold more than $300,000 in flooring and ran warehouse inventory audits. At Whop, a payments platform for online businesses, I moved from support into operations and trust &amp; safety: 400-700 customer conversations a week, then 250-800 risk and compliance reviews a day. Since 2022 I've also run XC Consult, a one-person web, design, and SEO practice.</p>
-
-          <table class="timeline">
-            <caption class="label">Timeline</caption>
-            <thead>
-              <tr><th scope="col">Years</th><th scope="col">Role</th></tr>
-            </thead>
-            <tbody>
-              <tr><td class="yrs">2025-2026</td><td><strong>Whop</strong><br>CX Operations, Trust &amp; Safety, Customer Support</td></tr>
-              <tr><td class="yrs">2025</td><td><strong>Floor &amp; Decor</strong><br>Sales &amp; Warehouse Associate</td></tr>
-              <tr><td class="yrs">2024-2025</td><td><strong>eXp Realty</strong><br>Realty Consultant (Sales &amp; Client Success)</td></tr>
-              <tr><td class="yrs">2022-present</td><td><strong>XC Consult</strong><br>Founder &amp; Consultant</td></tr>
-            </tbody>
-          </table>
-
-          <p class="stamp">Google IT Support Professional Certificate (Google / Coursera)</p>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- SEC. 03 HOW I THINK (copy: content.md > HOW I THINK) -->
-      <section class="sec think sec--black" id="how-i-think">
-        <p class="sheet">SEC. 03 / 11</p>
-        <h2 class="sec__title snapin">How I think</h2>
-        <p class="think__lead">Same brief, two executions. Concept work.</p>
+    <!-- SEC. 03 HOW I THINK (content.md > HOW I THINK) -->
+    <section class="sec" id="how-i-think" data-group="about">
+      <div class="wrap">
+        <p class="tag">SEC. 03 / 11</p>
+        <h2>How I think</h2>
+        <p class="lead">Same brief, two executions. Concept work.</p>
 
         <div class="panels">
-          <figure class="panel panel--generic">
-            <p class="panel__label"><span>GENERIC</span><span class="panel__hint">CLICK TO ENLARGE</span></p>
+          <figure class="panel">
+            <p class="panel__label"><b>GENERIC</b><span>CLICK TO ENLARGE</span></p>
             <button type="button" class="panel__open" data-zoom="img/how-i-think-generic.jpg"
                     data-alt="Generic AI SEO ad: bright blue sky, a thumbs-up robot, stacks of cash, a red starburst and a red Click here to dominate search button"
                     aria-label="Enlarge the generic ad">
@@ -112,8 +92,8 @@
                    alt="Generic AI SEO ad: bright blue sky, a thumbs-up robot, stacks of cash, a red starburst and a red Click here to dominate search button">
             </button>
           </figure>
-          <figure class="panel panel--intentional">
-            <p class="panel__label"><span>INTENTIONAL</span><span class="panel__hint">CLICK TO ENLARGE</span></p>
+          <figure class="panel">
+            <p class="panel__label"><b>INTENTIONAL</b><span>CLICK TO ENLARGE</span></p>
             <button type="button" class="panel__open" data-zoom="img/how-i-think-intentional.jpg"
                     data-alt="Intentional SEO ad: a hiker on a mountain ridge at sunset above the clouds, with the headline Get Found. Stay Ahead."
                     aria-label="Enlarge the intentional ad">
@@ -123,50 +103,55 @@
           </figure>
         </div>
 
-        <p class="think__caption">Nearly 11 years of video editing and graphic design.</p>
-      </section>
+        <p class="caption">Nearly 11 years of video editing and graphic design.</p>
+      </div>
+    </section>
 
-      <!-- SEC. 04 BOULDER AUTO DETAIL, flagship (copy: content.md > BOULDER AUTO DETAIL) -->
-      <section class="sec boulder sec--blue" id="boulder">
-        <p class="sheet">SEC. 04 / 11 &middot; FLAGSHIP</p>
-        <h2 class="sec__title t-long snapin">Boulder Auto Detail</h2>
-        <p class="boulder__sub">Full site rebuild, SEO roadmap, content strategy</p>
+    <!-- SEC. 04 BOULDER AUTO DETAIL, flagship (content.md > BOULDER AUTO DETAIL) -->
+    <section class="sec" id="boulder" data-group="work">
+      <div class="wrap">
+        <p class="tag">SEC. 04 / 11 &middot; FLAGSHIP</p>
+        <h2>Boulder Auto Detail</h2>
+        <p class="sub">Full site rebuild, SEO roadmap, content strategy</p>
 
-        <p class="boulder__copy">Built a new boulderautodetail.com in WordPress for a local detailing shop. Kept the existing URLs and redirects intact so search rankings carried through the migration. Built nine vehicle-brand hub pages (Tesla, BMW, Porsche, Ford, Audi, Mercedes-Benz, Rivian, Land Rover, Corvette), each with service tabs for paint protection film, ceramic coating, and window tint. Wrote the SEO roadmap and a post-launch content strategy, and taught the client how to run an evergreen blog.</p>
+        <p class="prose">Built a new boulderautodetail.com in WordPress for a local detailing shop. Kept the existing URLs and redirects intact so search rankings carried through the migration. Built nine vehicle-brand hub pages (Tesla, BMW, Porsche, Ford, Audi, Mercedes-Benz, Rivian, Land Rover, Corvette), each with service tabs for paint protection film, ceramic coating, and window tint. Wrote the SEO roadmap and a post-launch content strategy, and taught the client how to run an evergreen blog.</p>
 
-        <p class="boulder__result"><span class="label">Result</span> <span class="todo">[TODO: one measurable result, only if I can prove it]</span></p>
+        <p class="result"><span class="label">Result</span> <span class="todo">[TODO: one measurable result, only if I can prove it]</span></p>
 
-        <div class="pins">
-          <figure class="pin pin--1">
+        <div class="cars">
+          <figure class="card">
             <img src="img/porsche-front.jpg" width="1000" height="562" loading="lazy" alt="White Porsche 911 render, front three-quarter view">
-            <span class="pin__ticks" aria-hidden="true"></span>
             <figcaption><span>01</span><span>PORSCHE / FRONT</span></figcaption>
           </figure>
-          <figure class="pin pin--2">
+          <figure class="card">
             <img src="img/corvette-back.jpg" width="1000" height="563" loading="lazy" alt="White Corvette render, rear three-quarter view">
-            <span class="pin__ticks" aria-hidden="true"></span>
             <figcaption><span>02</span><span>CORVETTE / BACK</span></figcaption>
           </figure>
-          <figure class="pin pin--3">
+          <figure class="card">
             <img src="img/bmw-back.jpg" width="1000" height="582" loading="lazy" alt="BMW render, rear view">
-            <span class="pin__ticks" aria-hidden="true"></span>
             <figcaption><span>03</span><span>BMW / BACK</span></figcaption>
           </figure>
-          <figure class="pin pin--4">
+          <figure class="card">
             <img src="img/ford-side.jpg" width="1000" height="455" loading="lazy" alt="Ford render, side view">
-            <span class="pin__ticks" aria-hidden="true"></span>
             <figcaption><span>04</span><span>FORD / SIDE</span></figcaption>
           </figure>
         </div>
-        <p class="boulder__cap"><span class="todo">[TODO: accurate description of how the vehicle visuals were made]</span></p>
+        <p class="note"><span class="todo">[TODO: accurate description of how the vehicle visuals were made]</span></p>
 
-        <div class="strip">
-          <p class="label">Rebuilt site</p>
-          <div class="strip__row">
-            <figure><img src="img/boulder-site-1.jpg" width="1100" height="524" loading="lazy" alt="Boulder Auto Detail homepage hero with the headline Your Car, Held to a Higher Standard"><figcaption>S-01</figcaption></figure>
-            <figure><img src="img/boulder-site-3.jpg" width="1100" height="591" loading="lazy" alt="Boulder Auto Detail Areas We Serve section and brands-serviced panel"><figcaption>S-02</figcaption></figure>
-            <figure><img src="img/boulder-site-5.jpg" width="1100" height="392" loading="lazy" alt="Boulder Auto Detail Choose Your Service cards for window tint, paint protection film, and ceramic coating"><figcaption>S-03</figcaption></figure>
-          </div>
+        <h3 class="label">Rebuilt site</h3>
+        <div class="shots">
+          <figure class="card">
+            <img src="img/boulder-site-1.jpg" width="1100" height="524" loading="lazy" alt="Boulder Auto Detail homepage hero with the headline Your Car, Held to a Higher Standard">
+            <figcaption><span>S-01</span></figcaption>
+          </figure>
+          <figure class="card">
+            <img src="img/boulder-site-3.jpg" width="1100" height="591" loading="lazy" alt="Boulder Auto Detail Areas We Serve section and brands-serviced panel">
+            <figcaption><span>S-02</span></figcaption>
+          </figure>
+          <figure class="card">
+            <img src="img/boulder-site-5.jpg" width="1100" height="392" loading="lazy" alt="Boulder Auto Detail Choose Your Service cards for window tint, paint protection film, and ceramic coating">
+            <figcaption><span>S-03</span></figcaption>
+          </figure>
         </div>
 
         <!-- SEO roadmap viewer. When the file exists: put it in /files and replace the .doc__page contents
@@ -184,13 +169,15 @@
           <blockquote class="bubble"><span class="todo">[TODO: transcribe from boulder auto screenshots]</span></blockquote>
           <figcaption class="sms__who"><span class="todo">[TODO: first name, Boulder Auto Detail]</span></figcaption>
         </figure>
-      </section>
+      </div>
+    </section>
 
-      <!-- SEC. 05 CRM SYSTEMS (copy: content.md > CRM SYSTEMS) -->
-      <section class="sec crm" id="crm">
-        <p class="sheet">SEC. 05 / 11</p>
-        <h2 class="sec__title t-mid snapin">Realtor pipeline</h2>
-        <p class="crm__sub">Built at eXp Realty, 2024-2025</p>
+    <!-- SEC. 05 CRM SYSTEMS (content.md > CRM SYSTEMS) -->
+    <section class="sec" id="crm" data-group="work">
+      <div class="wrap">
+        <p class="tag">SEC. 05 / 11</p>
+        <h2>Realtor pipeline</h2>
+        <p class="sub">Built at eXp Realty, 2024-2025</p>
 
         <ol class="pipe" data-pipe>
           <li class="pipe__stage" style="--i:0"><span class="pipe__node"></span><span class="pipe__label"><span class="pipe__n">01</span> Lead capture</span></li>
@@ -201,13 +188,15 @@
           <li class="pipe__dot" aria-hidden="true"></li>
         </ol>
 
-        <p class="crm__copy">Built in Go High Level for the realtors I supported alongside my sales role. Instagram leads came in, were profiled by preference, received personalized automated weekly texts, booked walkthroughs, and were tracked through to closed sale. Supported roughly 40-50 clients a year. <span class="todo">[TODO: confirm this number]</span></p>
-      </section>
+        <p class="prose">Built in Go High Level for the realtors I supported alongside my sales role. Instagram leads came in, were profiled by preference, received personalized automated weekly texts, booked walkthroughs, and were tracked through to closed sale. Supported roughly 40-50 clients a year. <span class="todo">[TODO: confirm this number]</span></p>
+      </div>
+    </section>
 
-      <!-- SEC. 06 WHOP (copy: content.md > WHOP) -->
-      <section class="sec whop sec--black" id="whop">
-        <p class="sheet">SEC. 06 / 11</p>
-        <h2 class="sec__title snapin">Whop</h2>
+    <!-- SEC. 06 WHOP (content.md > WHOP) -->
+    <section class="sec" id="whop" data-group="whop">
+      <div class="wrap">
+        <p class="tag">SEC. 06 / 11</p>
+        <h2>Whop</h2>
 
         <ul class="metrics">
           <li><b>400-700</b><span>conversations a week</span></li>
@@ -223,27 +212,29 @@
             <span class="wire"></span>
             <span class="box">Intercom</span>
           </div>
-          <p class="systems__copy">Designed a Slack-to-Intercom ticket link that posts internal Slack thread updates to the customer's Intercom ticket, closing a tracking gap between support and internal teams. Built SOPs for a support team with little formal training, and trained teammates on them.</p>
+          <p class="prose">Designed a Slack-to-Intercom ticket link that posts internal Slack thread updates to the customer's Intercom ticket, closing a tracking gap between support and internal teams. Built SOPs for a support team with little formal training, and trained teammates on them.</p>
         </div>
 
         <div class="incident">
           <p class="label">Incident</p>
-          <p>Caught an account takeover on a creator account, with attempted crypto withdrawals, while Trust &amp; Safety was offline. Escalated it directly to Security leadership. Whop later shipped sign-out-of-all-devices and login alerts.</p>
+          <p class="prose">Caught an account takeover on a creator account, with attempted crypto withdrawals, while Trust &amp; Safety was offline. Escalated it directly to Security leadership. Whop later shipped sign-out-of-all-devices and login alerts.</p>
         </div>
 
         <div class="fine">
           <p>Worked with account managers and customer success on merchants doing $20K to $5M in GMV, and escalated merchant issues directly with Stripe, Klarna, Splitit, Coinflow, Rain, and MassPay.</p>
           <p>Verified KYC and KYB documents for merchant accounts.</p>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- SEC. 07 AMPHS AI (copy: content.md > AMPHS AI) -->
-      <section class="sec amphs" id="amphs">
-        <p class="sheet">SEC. 07 / 11</p>
-        <h2 class="sec__title snapin">Amphs AI</h2>
-        <p class="amphs__copy">Advisory on Meta ad strategy and content direction for a high-ticket coaching program client.</p>
+    <!-- SEC. 07 AMPHS AI (content.md > AMPHS AI) -->
+    <section class="sec" id="amphs" data-group="work">
+      <div class="wrap">
+        <p class="tag">SEC. 07 / 11</p>
+        <h2>Amphs AI</h2>
+        <p class="lead">Advisory on Meta ad strategy and content direction for a high-ticket coaching program client.</p>
 
-        <div class="amphs__quotes">
+        <div class="trio">
           <figure class="sms">
             <p class="sms__bar"><span>MESSAGE</span><span>AMPHS AI</span></p>
             <blockquote class="bubble"><span class="todo">[TODO: from amphs ai screenshots]</span></blockquote>
@@ -252,36 +243,38 @@
             <p class="sms__bar"><span>MESSAGE</span><span>AMPHS AI</span></p>
             <blockquote class="bubble"><span class="todo">[TODO]</span></blockquote>
           </figure>
+
+          <figure class="chart">
+            <p class="chart__flag"><b>ILLUSTRATIVE</b><span>NOT CLIENT DATA</span></p>
+            <svg viewBox="0 0 320 148" role="img" aria-label="Illustrative bar chart with six bars rising from left to right. Not client data.">
+              <defs>
+                <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                  <path d="M0 0V6" stroke="#4C7DFF" stroke-width="1"/>
+                </pattern>
+              </defs>
+              <path d="M24 8V140H312" fill="none" stroke="#A0A0A8" stroke-width="1.5"/>
+              <g fill="url(#hatch)" stroke="#4C7DFF" stroke-width="1.5">
+                <rect x="40"  y="116" width="28" height="24"/>
+                <rect x="82"  y="104" width="28" height="36"/>
+                <rect x="124" y="84"  width="28" height="56"/>
+                <rect x="166" y="92"  width="28" height="48"/>
+                <rect x="208" y="58"  width="28" height="82"/>
+                <rect x="250" y="34"  width="28" height="106"/>
+              </g>
+            </svg>
+            <p class="chart__axis">ARBITRARY UNITS</p>
+            <figcaption>Illustrative</figcaption>
+          </figure>
         </div>
+      </div>
+    </section>
 
-        <figure class="chart">
-          <p class="chart__flag">ILLUSTRATIVE <span>NOT CLIENT DATA</span></p>
-          <svg viewBox="0 0 320 148" role="img" aria-label="Illustrative bar chart with six bars rising from left to right. Not client data.">
-            <defs>
-              <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-                <path d="M0 0V6" stroke="#0a2cff" stroke-width="1"/>
-              </pattern>
-            </defs>
-            <path d="M24 8V140H312" fill="none" stroke="#000" stroke-width="1.5"/>
-            <g fill="url(#hatch)" stroke="#0a2cff" stroke-width="1.5">
-              <rect x="40"  y="116" width="28" height="24"/>
-              <rect x="82"  y="104" width="28" height="36"/>
-              <rect x="124" y="84"  width="28" height="56"/>
-              <rect x="166" y="92"  width="28" height="48"/>
-              <rect x="208" y="58"  width="28" height="82"/>
-              <rect x="250" y="34"  width="28" height="106"/>
-            </g>
-          </svg>
-          <p class="chart__axis">ARBITRARY UNITS</p>
-          <figcaption>Illustrative</figcaption>
-        </figure>
-      </section>
-
-      <!-- SEC. 08 SMALLER BRANDS + GALLERY (copy: content.md > SMALLER BRANDS, GALLERY) -->
-      <section class="sec gallery" id="gallery">
-        <p class="sheet">SEC. 08 / 11</p>
-        <h2 class="sec__title t-long snapin">Gallery</h2>
-        <p class="brands">Also supported small brands in auto detailing, roofing, landscaping, and med spa through XC Consult.</p>
+    <!-- SEC. 08 SMALLER BRANDS + GALLERY (content.md > SMALLER BRANDS, GALLERY) -->
+    <section class="sec" id="gallery" data-group="work">
+      <div class="wrap">
+        <p class="tag">SEC. 08 / 11</p>
+        <h2>Gallery</h2>
+        <p class="lead">Also supported small brands in auto detailing, roofing, landscaping, and med spa through XC Consult.</p>
 
         <div class="tiles">
           <figure class="tile tile--wide">
@@ -327,12 +320,14 @@
             <figcaption>The Eye Within</figcaption>
           </figure>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- SEC. 09 SKILLS AND TOOLS (copy: content.md > SKILLS AND TOOLS) -->
-      <section class="sec skills sec--black" id="skills">
-        <p class="sheet">SEC. 09 / 11</p>
-        <h2 class="sec__title t-mid snapin">Skills and tools</h2>
+    <!-- SEC. 09 SKILLS AND TOOLS (content.md > SKILLS AND TOOLS) -->
+    <section class="sec" id="skills" data-group="skills">
+      <div class="wrap">
+        <p class="tag">SEC. 09 / 11</p>
+        <h2>Skills and tools</h2>
 
         <div class="parts">
           <section class="part">
@@ -352,15 +347,17 @@
             <ol><li>Claude</li><li>Claude Code</li><li>Cursor</li><li>Grok</li></ol>
           </section>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- SEC. 10 TESTIMONIALS (copy: content.md > TESTIMONIALS). Quotes not yet picked, so placeholders. -->
-      <section class="sec quotes" id="testimonials">
-        <p class="sheet">SEC. 10 / 11</p>
-        <h2 class="sec__title t-xlong snapin">Testimonials</h2>
-        <p class="quotes__note"><span class="todo">[TODO: transcribe from the amphs ai, exp realty, and boulder auto screenshots, with source labels]</span></p>
+    <!-- SEC. 10 TESTIMONIALS (content.md > TESTIMONIALS). Quotes not yet picked, so placeholders. -->
+    <section class="sec" id="testimonials" data-group="contact">
+      <div class="wrap">
+        <p class="tag">SEC. 10 / 11</p>
+        <h2>Testimonials</h2>
+        <p class="note"><span class="todo">[TODO: transcribe from the amphs ai, exp realty, and boulder auto screenshots, with source labels]</span></p>
 
-        <div class="quotes__list">
+        <div class="trio">
           <figure class="sms">
             <p class="sms__bar"><span>MESSAGE</span><span>EXP REALTY</span></p>
             <blockquote class="bubble"><span class="todo">[TODO: quote]</span></blockquote>
@@ -374,11 +371,13 @@
             <blockquote class="bubble"><span class="todo">[TODO: quote]</span></blockquote>
           </figure>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- SEC. 11 CLOSING (copy: content.md > CLOSING, EMAIL, LOCATION, LINKEDIN) -->
-      <section class="sec closing sec--blue" id="closing">
-        <p class="sheet">SEC. 11 / 11</p>
+    <!-- SEC. 11 CLOSING (content.md > CLOSING, EMAIL, LOCATION, LINKEDIN) -->
+    <section class="sec" id="closing" data-group="contact">
+      <div class="wrap">
+        <p class="tag">SEC. 11 / 11</p>
         <p class="closing__line">Looking for a customer success, account management, or operations role where I can build systems, not just follow them.</p>
 
         <dl class="closing__meta">
@@ -393,13 +392,10 @@
         </p>
 
         <p class="closing__refs">References available upon request.</p>
-      </section>
+      </div>
+    </section>
 
-    </main>
-  </div>
-
-  <!-- Live scroll position, in the top ruler -->
-  <div class="readout" aria-hidden="true">Y <span data-readout>0000</span></div>
+  </main>
 
   <!-- Click-to-enlarge viewer for the How I think images. Click anywhere or press Esc to close. -->
   <dialog class="zoom" data-zoom-dialog aria-label="Enlarged image">
