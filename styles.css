@@ -747,6 +747,7 @@ h2::after {               /* thin blue rule under each heading */
 
 @media (min-width: 48em) {
   .trio { grid-template-columns: repeat(3, 1fr); }
+  .trio--two { grid-template-columns: repeat(2, 1fr); }   /* testimonials: two quotes */
 }
 
 .chart {
