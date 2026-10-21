@@ -312,32 +312,20 @@ h3 { font-size: 20px; line-height: 1.3; }
 }
 
 /* ==========================================================
-   2. ABOUT: portrait (300px, 40px gap) beside the text. Phones: portrait above, 240px.
+   2. ABOUT: heading left, text right (stacked on phones). Text only.
    ========================================================== */
 .about {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: 20px;
   align-items: start;
 }
 
-.portrait { width: 240px; }
-
-.portrait img {
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;                    /* natural colour, no filter */
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-}
-
 .about__text > * + * { margin-top: 28px; }
-.about__text > .prose:first-child { margin-top: -0.4em; }   /* first line meets the photo's top edge */
 
 @media (min-width: 48em) {
-  .about { grid-template-columns: 300px 1fr; gap: 40px; }
-  .portrait { width: 300px; }
+  .about { grid-template-columns: 1fr 2.4fr; gap: 40px; }
+  .about__text { padding-top: 0.45em; }
 }
 
 .timeline { margin-top: 8px; border-top: 1px solid var(--line); }
@@ -382,45 +370,29 @@ h3 { font-size: 20px; line-height: 1.3; }
 /* ==========================================================
    3. HOW I THINK
    ========================================================== */
-.panels {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 28px;
-}
+.sec--quote .wrap { text-align: center; }
+.sec--quote .wrap > h2 + * { margin-top: 28px; }
 
-@media (min-width: 48em) {
-  .panels { grid-template-columns: 1fr 1fr; gap: 24px; }
-}
+.pull { max-width: 38ch; margin-inline: auto; }
 
-.panel__label {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 10px;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.panel__label b { color: var(--cream); font-weight: 600; }
-.panel__label span { color: var(--muted); }
-
-.panel__open {
+.pull::before {
+  content: "";
   display: block;
-  width: 100%;
-  padding: 0;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--surface);
-  overflow: hidden;
-  cursor: zoom-in;
-  box-shadow: var(--shadow);
-  transition: border-color var(--soft), transform var(--soft);
+  width: 48px;
+  height: 2px;
+  margin: 0 auto 24px;
+  border-radius: 2px;
+  background: var(--green);
 }
 
-.panel__open:hover { border-color: var(--green); transform: translateY(-2px); }
-.panel__open img { width: 100%; height: auto; }
+.pull p {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3.4vw, 34px);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.005em;
+}
 
 .zoom {
   max-width: min(96vw, 1100px);
@@ -457,9 +429,11 @@ h3 { font-size: 20px; line-height: 1.3; }
 
 .zoom img {
   display: block;
-  width: 100%;
+  width: auto;
+  height: auto;
+  max-width: min(96vw, 1100px);
   max-height: calc(96vh - 60px);
-  object-fit: contain;
+  margin-inline: auto;
   cursor: zoom-out;
 }
 
@@ -469,11 +443,7 @@ h3 { font-size: 20px; line-height: 1.3; }
 .cars {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-
-@media (min-width: 48em) {
-  .cars { gap: 16px; }
+  gap: 16px;
 }
 
 .car {
@@ -485,9 +455,14 @@ h3 { font-size: 20px; line-height: 1.3; }
 
 .car img { width: 100%; aspect-ratio: 16 / 9; object-fit: contain; }
 
+.card--flagship > .cars + .note { margin-top: 12px; }
+.card--flagship .note { font-size: 15px; }
+
+/* One row of screenshots. Each width follows its own aspect ratio (--ar), so the three share one height.
+   Phones: the row scrolls sideways. */
 .strip {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   margin-inline: -20px;
   padding: 0 20px 8px;
   overflow-x: auto;
@@ -495,69 +470,33 @@ h3 { font-size: 20px; line-height: 1.3; }
 }
 
 .strip figure {
-  flex: 0 0 78%;
+  flex: 0 0 calc(var(--ar) * 150px);
   scroll-snap-align: start;
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: var(--radius);
   overflow: hidden;
 }
 
+.strip img { width: 100%; height: auto; }
+
 @media (min-width: 48em) {
-  .strip {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    align-items: start;
-    gap: 16px;
-    margin-inline: 0;
-    padding: 0;
-    overflow: visible;
-  }
+  .strip { margin-inline: 0; padding: 0; overflow: visible; }
+  .strip figure { flex: var(--ar) 1 0; min-width: 0; }
 }
 
-.doc {
+.slim {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  padding: 12px 20px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--surface-2);
 }
-
-.doc summary {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 52px;
-  padding: 0 20px;
-  font-weight: 600;
-  cursor: pointer;
-  list-style: none;
-  transition: color var(--soft);
-}
-
-.doc summary::-webkit-details-marker { display: none; }
-.doc summary::after { content: "+"; color: var(--green); font-size: 22px; line-height: 1; }
-.doc[open] summary::after { content: "\2212"; }
-.doc summary:hover { color: var(--green); }
-.doc__body { padding: 4px 20px 20px; }
-
-/* Typed message bubble with a source line */
-.msg { max-width: 26rem; }
-
-.bubble {
-  padding: 14px 18px;
-  border: 1px solid var(--line);
-  border-radius: 20px 20px 20px 6px;
-  background: var(--surface-2);
-  line-height: 1.5;
-}
-
-.msg figcaption {
-  margin: 8px 0 0 8px;
-  color: var(--muted);
-  font-size: 14px;
-}
-
 /* ==========================================================
    5. REALTOR PIPELINE: five steps, a soft dot that travels as you scroll.
-   script.js sets --p (0 to 1) on .pipe and adds .is-lit to stages.
+   script.js loops --p (0 to 1) on .pipe and adds .is-lit to stages.
    Phones: vertical. Desktop: left to right.
    ========================================================== */
 .pipe {
@@ -766,56 +705,32 @@ h3 { font-size: 20px; line-height: 1.3; }
 .card--incident .label { color: var(--green); }
 
 /* ==========================================================
-   7. AMPHS AI (also holds the Testimonials bubbles)
+   10. TESTIMONIALS: screenshots in three labeled groups, about 300px wide, click to enlarge
    ========================================================== */
-.trio {
+.tgroup > * + * { margin-top: 14px; }
+
+.tgrid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 300px));
+  gap: 16px;
   align-items: start;
 }
 
-@media (min-width: 48em) {
-  .trio { grid-template-columns: repeat(3, 1fr); }
-  .trio--two { grid-template-columns: repeat(2, 1fr); }
-}
-
-.chart {
+.shot {
+  display: block;
+  width: 100%;
+  padding: 0;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--surface);
-  box-shadow: var(--shadow);
   overflow: hidden;
+  cursor: zoom-in;
+  box-shadow: var(--shadow);
+  transition: border-color var(--soft), transform var(--soft);
 }
 
-.chart__flag {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 2px 12px;
-  padding: 10px 16px;
-  border-bottom: 1px solid var(--line);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.chart__flag b { color: var(--cream); font-weight: 600; }
-.chart__flag span { color: var(--muted); }
-
-.chart svg { display: block; width: calc(100% - 32px); height: auto; margin: 16px; }
-
-.chart figcaption {
-  padding: 8px 16px;
-  border-top: 1px solid var(--line);
-  color: var(--cream);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
+.shot:hover { border-color: var(--green); transform: translateY(-2px); }
+.shot img { width: 100%; height: auto; }
 /* ==========================================================
    8. GALLERY: tidy grid. Titles under each piece. Videos load on click.
    ========================================================== */
@@ -951,6 +866,6 @@ h3 { font-size: 20px; line-height: 1.3; }
 @media (prefers-reduced-motion: reduce) {
   .js .reveal { opacity: 1; transform: none; transition: none; }
   .wire::after { animation: none; opacity: 1; }
-  .panel__open:hover { transform: none; }
-  .nav li a, .btn, .panel__open, .doc summary, .tile__box, .tile__play, .pipe__node, .pipe__label { transition: none; }
+  .shot:hover { transform: none; }
+  .nav li a, .btn, .shot, .tile__box, .tile__play, .pipe__node, .pipe__label { transition: none; }
 }

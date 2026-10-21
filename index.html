@@ -41,7 +41,7 @@
     <!-- 1. HERO (content.md > NAME, HERO) -->
     <section class="hero" id="top">
       <div class="hero__media">
-        <img src="img/relaxed.jpg" width="1206" height="1206" fetchpriority="high"
+        <img src="img/relaxed.jpg" srcset="img/relaxed-1600.jpg 1600w, img/relaxed.jpg 2412w" sizes="(min-width: 64em) 68vw, 100vw" width="2412" height="2412" fetchpriority="high"
              alt="Gage Dunn lying back in dark green grass with eyes closed and hands behind the head, wearing a gray ribbed sweater, white flowers at the lower left">
       </div>
       <div class="wrap hero__in">
@@ -61,13 +61,8 @@
     <!-- 2. ABOUT (content.md > ABOUT) -->
     <section class="sec" id="about" data-group="about">
       <div class="wrap">
-        <h2 class="reveal">About</h2>
-
         <div class="about reveal">
-          <figure class="portrait">
-            <img src="img/professional.jpg" width="800" height="1000" loading="lazy"
-                 alt="Portrait of Gage Dunn in glasses and a pinstripe suit, holding a black coffee cup and looking into the camera">
-          </figure>
+          <h2>About</h2>
 
           <div class="about__text">
             <p class="prose">I started in sales and client success. At eXp Realty I sold a $10,000 brand-building course to real estate agents, averaging 6-7 sales a month, and ran weekly check-ins to audit each agent's business and close the gaps. At Floor &amp; Decor I sold more than $300,000 in flooring and ran warehouse inventory audits. At Whop, a payments platform for online businesses, I moved from support into operations and trust &amp; safety. Since 2022 I've also run XC Consult, a one-person web, design, and SEO practice.</p>
@@ -89,36 +84,14 @@
     </section>
 
     <!-- 3. HOW I THINK (content.md > HOW I THINK) -->
-    <section class="sec" id="how-i-think" data-group="projects">
+    <section class="sec sec--quote" id="how-i-think" data-group="projects">
       <div class="wrap">
         <h2 class="reveal">How I think</h2>
-        <p class="lead reveal">Same brief, two executions. Concept work.</p>
-
-        <div class="panels reveal">
-          <figure class="panel">
-            <p class="panel__label"><b>GENERIC</b><span>Click to enlarge</span></p>
-            <button type="button" class="panel__open" data-zoom="img/how-i-think-generic.jpg"
-                    data-alt="Generic AI SEO ad: bright blue sky, a thumbs-up robot, stacks of cash, a red starburst and a red Click here to dominate search button"
-                    aria-label="Enlarge the generic ad">
-              <img src="img/how-i-think-generic.jpg" width="1254" height="1254" loading="lazy"
-                   alt="Generic AI SEO ad: bright blue sky, a thumbs-up robot, stacks of cash, a red starburst and a red Click here to dominate search button">
-            </button>
-          </figure>
-          <figure class="panel">
-            <p class="panel__label"><b>INTENTIONAL</b><span>Click to enlarge</span></p>
-            <button type="button" class="panel__open" data-zoom="img/how-i-think-intentional.jpg"
-                    data-alt="Intentional SEO ad: a hiker on a mountain ridge at sunset above the clouds, with the headline Get Found. Stay Ahead."
-                    aria-label="Enlarge the intentional ad">
-              <img src="img/how-i-think-intentional.jpg" width="1024" height="1024" loading="lazy"
-                   alt="Intentional SEO ad: a hiker on a mountain ridge at sunset above the clouds, with the headline Get Found. Stay Ahead.">
-            </button>
-          </figure>
-        </div>
-
-        <p class="caption reveal">Nearly 11 years of video editing and graphic design.</p>
+        <blockquote class="pull reveal">
+          <p>I like learning how things work, figuring out what could be better, and then actually building it. Nearly 11 years of video editing and graphic design behind that.</p>
+        </blockquote>
       </div>
     </section>
-
     <!-- 4. BOULDER AUTO DETAIL, flagship (content.md > WORK) -->
     <section class="sec" id="boulder" data-group="projects">
       <div class="wrap">
@@ -132,30 +105,19 @@
             <figure class="car"><img src="img/bmw-back.jpg" width="1200" height="699" loading="lazy" alt="White BMW sedan, rear three-quarter view, on a dark background"></figure>
             <figure class="car"><img src="img/ford-side.jpg" width="1200" height="546" loading="lazy" alt="White Ford Raptor pickup truck, side view, on a dark background"></figure>
           </div>
-          <p class="note"><span class="todo">[TODO: accurate description of how the visuals were made]</span></p>
+          <p class="note">Vehicle visuals made in Photoshop, plus renderings I built from the vehicles with ComfyUI.</p>
 
-          <p class="label">The rebuilt site</p>
+          <p class="label">Rebuilt site</p>
           <div class="strip">
-            <figure><img src="img/boulder-site-1.jpg" width="1400" height="667" loading="lazy" alt="Boulder Auto Detail homepage hero with the headline Your Car, Held to a Higher Standard over a close-up of a car's taillight"></figure>
-            <figure><img src="img/boulder-site-3.jpg" width="1400" height="752" loading="lazy" alt="Boulder Auto Detail Areas We Serve section above a green panel reading Every Driver, One Standard with vehicle brand logos"></figure>
-            <figure><img src="img/boulder-site-5.jpg" width="1400" height="617" loading="lazy" alt="Boulder Auto Detail Choose Your Service cards for window tint, paint protection film, and ceramic coating"></figure>
+            <figure style="--ar:2.099"><img src="img/boulder-site-1.jpg" width="1400" height="667" loading="lazy" alt="Boulder Auto Detail homepage hero with the headline Your Car, Held to a Higher Standard over a close-up of a car's taillight"></figure>
+            <figure style="--ar:1.862"><img src="img/boulder-site-3.jpg" width="1400" height="752" loading="lazy" alt="Boulder Auto Detail Areas We Serve section above a green panel reading Every Driver, One Standard with vehicle brand logos"></figure>
+            <figure style="--ar:2.269"><img src="img/boulder-site-5.jpg" width="1400" height="617" loading="lazy" alt="Boulder Auto Detail Choose Your Service cards for window tint, paint protection film, and ceramic coating"></figure>
           </div>
 
-          <details class="doc">
-            <summary>SEO roadmap</summary>
-            <div class="doc__body">
-              <p class="note"><span class="todo">[TODO: PDF not added yet]</span></p>
-            </div>
-          </details>
-
-          <figure class="msg">
-            <blockquote class="bubble"><span class="todo">[TODO: quote from screenshots]</span></blockquote>
-            <figcaption>Boulder Auto Detail</figcaption>
-          </figure>
+          <p class="slim"><span class="label">SEO roadmap</span><span class="todo">[TODO: PDF not added yet]</span></p>
         </article>
       </div>
     </section>
-
     <!-- 5. REALTOR PIPELINE (content.md > WORK) -->
     <section class="sec" id="pipeline" data-group="projects">
       <div class="wrap">
@@ -218,37 +180,10 @@
     <section class="sec" id="amphs" data-group="projects">
       <div class="wrap">
         <h2 class="reveal">Amphs AI</h2>
-        <p class="lead reveal">Advisory on Meta ad strategy and content direction for a high-ticket coaching program client.</p>
-
-        <div class="trio reveal">
-          <figure class="msg">
-            <blockquote class="bubble"><span class="todo">[TODO: quote 1 of 2 from screenshots]</span></blockquote>
-            <figcaption>Amphs AI</figcaption>
-          </figure>
-          <figure class="msg">
-            <blockquote class="bubble"><span class="todo">[TODO: quote 2 of 2 from screenshots]</span></blockquote>
-            <figcaption>Amphs AI</figcaption>
-          </figure>
-
-          <figure class="chart">
-            <p class="chart__flag"><b>Illustrative</b><span>Not client data</span></p>
-            <svg viewBox="0 0 320 150" role="img" aria-label="Illustrative bar chart with six bars rising from left to right. Not client data.">
-              <path d="M24 8V138H312" fill="none" stroke="#A9B3A6" stroke-width="1.5" stroke-linecap="round"/>
-              <g fill="#3E5C45" stroke="#8DB08A" stroke-width="1.5">
-                <rect x="40"  y="114" width="28" height="24" rx="5"/>
-                <rect x="82"  y="102" width="28" height="36" rx="5"/>
-                <rect x="124" y="82"  width="28" height="56" rx="5"/>
-                <rect x="166" y="90"  width="28" height="48" rx="5"/>
-                <rect x="208" y="56"  width="28" height="82" rx="5"/>
-                <rect x="250" y="32"  width="28" height="106" rx="5"/>
-              </g>
-            </svg>
-            <figcaption>Illustrative</figcaption>
-          </figure>
-        </div>
+        <p class="lead reveal">What they do, in their words: &ldquo;We Get ChatGPT to Recommend Your Business When People Ask for Your Service.&rdquo; <a href="https://www.amphs.ai/" rel="noopener">amphs.ai</a></p>
+        <p class="prose reveal">Advisory on Meta ad strategy and content direction for a high-ticket coaching program client. I also helped them build a video editing system.</p>
       </div>
     </section>
-
     <!-- 8. GALLERY + SMALLER BRANDS (content.md > GALLERY, WORK). Captions are [TODO], so titles only. Videos load on click. -->
     <section class="sec" id="gallery" data-group="projects">
       <div class="wrap">
@@ -345,23 +280,39 @@
       </div>
     </section>
 
-    <!-- 10. TESTIMONIALS (content.md > TESTIMONIALS). Placeholders until quotes are chosen. -->
+    <!-- 10. TESTIMONIALS (content.md > TESTIMONIALS). Web-ready copies of the screenshots; originals stay in assets/. -->
     <section class="sec" id="testimonials" data-group="">
       <div class="wrap">
         <h2 class="reveal">Testimonials</h2>
-        <div class="trio trio--two reveal">
-          <figure class="msg">
-            <blockquote class="bubble"><span class="todo">[TODO: from screenshots]</span></blockquote>
-            <figcaption>eXp Realty</figcaption>
-          </figure>
-          <figure class="msg">
-            <blockquote class="bubble"><span class="todo">[TODO: from screenshots]</span></blockquote>
-            <figcaption>eXp Realty</figcaption>
-          </figure>
+
+        <div class="tgroup reveal">
+          <h3>Amphs AI</h3>
+          <ul class="tgrid">
+            <li><button type="button" class="shot" data-zoom="img/testimonial-amphs-ai-1.jpg" data-alt="Text message screenshot reading &quot;thank you i appreciate it ur the boss bro&quot;" aria-label="Enlarge screenshot"><img src="img/testimonial-amphs-ai-1.jpg" width="900" height="171" loading="lazy" alt="Text message screenshot reading &quot;thank you i appreciate it ur the boss bro&quot;"></button></li>
+            <li><button type="button" class="shot" data-zoom="img/testimonial-amphs-ai-2.jpg" data-alt="Text message screenshot with the messages &quot;PERFECT&quot;, &quot;I'll clean it up nice&quot; and &quot;GIAT&quot;" aria-label="Enlarge screenshot"><img src="img/testimonial-amphs-ai-2.jpg" width="900" height="347" loading="lazy" alt="Text message screenshot with the messages &quot;PERFECT&quot;, &quot;I'll clean it up nice&quot; and &quot;GIAT&quot;"></button></li>
+            <li><button type="button" class="shot" data-zoom="img/testimonial-amphs-ai-3.jpg" data-alt="Chat screenshot with the messages &quot;watching&quot;, &quot;lets rip it&quot; and &quot;this is good&quot;" aria-label="Enlarge screenshot"><img src="img/testimonial-amphs-ai-3.jpg" width="900" height="241" loading="lazy" alt="Chat screenshot with the messages &quot;watching&quot;, &quot;lets rip it&quot; and &quot;this is good&quot;"></button></li>
+          </ul>
+        </div>
+
+        <div class="tgroup reveal">
+          <h3>Boulder Auto Detail</h3>
+          <ul class="tgrid">
+            <li><button type="button" class="shot" data-zoom="img/testimonial-boulder-auto-1.jpg" data-alt="Text message screenshot reading &quot;That's amazing. SEO is a lot to understand and implement a good strategy correctly.&quot;" aria-label="Enlarge screenshot"><img src="img/testimonial-boulder-auto-1.jpg" width="900" height="197" loading="lazy" alt="Text message screenshot reading &quot;That's amazing. SEO is a lot to understand and implement a good strategy correctly.&quot;"></button></li>
+            <li><button type="button" class="shot" data-zoom="img/testimonial-boulder-auto-2.jpg" data-alt="Text message screenshot reading &quot;LFG thank you very much!&quot; followed by a raised-hands emoji" aria-label="Enlarge screenshot"><img src="img/testimonial-boulder-auto-2.jpg" width="900" height="163" loading="lazy" alt="Text message screenshot reading &quot;LFG thank you very much!&quot; followed by a raised-hands emoji"></button></li>
+          </ul>
+        </div>
+
+        <div class="tgroup reveal">
+          <h3>eXp Realty</h3>
+          <ul class="tgrid">
+            <li><button type="button" class="shot" data-zoom="img/testimonial-exp-realty-1.jpg" data-alt="Text message screenshot reading &quot;YOU HAVE DONE AMAZING GAGE! GREAT WORK.&quot;" aria-label="Enlarge screenshot"><img src="img/testimonial-exp-realty-1.jpg" width="836" height="254" loading="lazy" alt="Text message screenshot reading &quot;YOU HAVE DONE AMAZING GAGE! GREAT WORK.&quot;"></button></li>
+            <li><button type="button" class="shot" data-zoom="img/testimonial-exp-realty-2.jpg" data-alt="Text message screenshot reading &quot;I love the setup. My team is having a blast just going through clients. Way to go!&quot;" aria-label="Enlarge screenshot"><img src="img/testimonial-exp-realty-2.jpg" width="900" height="289" loading="lazy" alt="Text message screenshot reading &quot;I love the setup. My team is having a blast just going through clients. Way to go!&quot;"></button></li>
+            <li><button type="button" class="shot" data-zoom="img/testimonial-exp-realty-3.jpg" data-alt="Text message screenshot reading &quot;It's smooth, I truly appreciate all your help Gage.&quot;" aria-label="Enlarge screenshot"><img src="img/testimonial-exp-realty-3.jpg" width="890" height="226" loading="lazy" alt="Text message screenshot reading &quot;It's smooth, I truly appreciate all your help Gage.&quot;"></button></li>
+            <li><button type="button" class="shot" data-zoom="img/testimonial-exp-realty-4.jpg" data-alt="Text message screenshot reading &quot;Thank you so much. You are incredible at your age.&quot; followed by a champagne emoji" aria-label="Enlarge screenshot"><img src="img/testimonial-exp-realty-4.jpg" width="832" height="223" loading="lazy" alt="Text message screenshot reading &quot;Thank you so much. You are incredible at your age.&quot; followed by a champagne emoji"></button></li>
+          </ul>
         </div>
       </div>
     </section>
-
     <!-- 11. CONTACT (content.md > CONTACT, EMAIL, LINKEDIN) -->
     <section class="sec" id="contact" data-group="contact">
       <div class="wrap">
@@ -389,7 +340,7 @@
     </div>
   </footer>
 
-  <!-- Click-to-enlarge viewer for the How I think images. Click anywhere or press Esc to close. -->
+  <!-- Click-to-enlarge viewer for the testimonial screenshots. Click anywhere or press Esc to close. -->
   <dialog class="zoom" data-zoom-dialog aria-label="Enlarged image">
     <button type="button" class="zoom__close">Close</button>
     <img src="" alt="">

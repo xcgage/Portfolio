@@ -19,9 +19,13 @@
     }
   }
 
-  /* ----- Pipeline: a dot travels through the five stages as you scroll, lighting each one ----- */
+  /* ----- Pipeline: a loop, like a GIF. A dot travels through the five stages and lights each one,
+     sits on 05 for 3 seconds, then starts over. It plays while the pipeline is on screen. ----- */
   var pipe = document.querySelector("[data-pipe]");
   var stages = pipe ? pipe.querySelectorAll(".pipe__stage") : [];
+  var PIPE_LEAD = 600;     // ms parked on 01 before moving
+  var PIPE_TRAVEL = 5000;  // ms from 01 to 05
+  var PIPE_HOLD = 3000;    // ms resting on 05 before the restart
 
   function setPipe(p) {
     pipe.style.setProperty("--p", p.toFixed(3));
@@ -30,13 +34,35 @@
     }
   }
 
-  function updatePipe() {
-    if (!pipe) return;
-    if (reduceMotion) { setPipe(1); return; }
-    var vh = window.innerHeight;
-    var r = pipe.getBoundingClientRect();
-    var p = (vh * 0.85 - r.top) / (vh * 0.4 + r.height);
-    setPipe(Math.max(0, Math.min(1, p)));
+  var pipeFrame = 0;
+  var pipeStart = 0;
+
+  function pipeTick(now) {
+    var t = (now - pipeStart) % (PIPE_LEAD + PIPE_TRAVEL + PIPE_HOLD);
+    var p = 0;
+    if (t >= PIPE_LEAD) {
+      var x = Math.min(1, (t - PIPE_LEAD) / PIPE_TRAVEL);
+      p = 0.5 - Math.cos(Math.PI * x) / 2;   // gentle ease in and out
+    }
+    setPipe(p);
+    pipeFrame = window.requestAnimationFrame(pipeTick);
+  }
+
+  if (pipe) {
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      setPipe(1);                            // no motion: show the finished pipeline
+    } else {
+      setPipe(0);
+      new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) {
+          if (!pipeFrame) { pipeStart = performance.now(); pipeFrame = window.requestAnimationFrame(pipeTick); }
+        } else if (pipeFrame) {
+          window.cancelAnimationFrame(pipeFrame);
+          pipeFrame = 0;
+          setPipe(0);
+        }
+      }, { threshold: 0.2 }).observe(pipe);
+    }
   }
 
   var ticking = false;
@@ -45,7 +71,6 @@
     ticking = true;
     window.requestAnimationFrame(function () {
       updateNav();
-      updatePipe();
       ticking = false;
     });
   }
@@ -53,7 +78,6 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", onScroll);
   updateNav();
-  updatePipe();
 
   /* ----- Gentle fade-up as sections come into view ----- */
   var reveals = document.querySelectorAll(".reveal");
