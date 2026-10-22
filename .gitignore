@@ -14,3 +14,6 @@ content.md
 *.ps1
 Thumbs.db
 .DS_Store
+
+# Source photo (the site uses the web copies in img/)
+final relaxed.png
