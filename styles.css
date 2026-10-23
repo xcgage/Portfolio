@@ -225,43 +225,15 @@ h3 { font-size: 20px; line-height: 1.3; }
 .pill--quiet { background: var(--surface); color: var(--muted); }
 
 /* ==========================================================
-   1. HERO. Phones and tablets: photo above the text, fading into it.
-   Desktop: photo on the right, text on the dark left. The scrim is --bg at 88% on the text side.
+   1. HERO: centered text on the page background, no photo.
    ========================================================== */
 .hero {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  padding-block: clamp(200px, 58vw, 320px) 48px;
+  padding-block: clamp(72px, 12vw, 140px);
   background: var(--bg);
+  text-align: center;
 }
 
-.hero__media {
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: clamp(280px, 80vw, 440px);
-}
-
-.hero__media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 60% 35%;             /* keeps the face in frame */
-  -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
-}
-
-.hero__media::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(var(--bg-rgb), 0) 0%, rgba(var(--bg-rgb), 0.88) 100%);
-}
-
-.hero__text { max-width: 31rem; }
+.hero__text { max-width: 40rem; margin-inline: auto; }
 .hero__text > * + * { margin-top: 20px; }
 
 .hero__name {
@@ -281,36 +253,7 @@ h3 { font-size: 20px; line-height: 1.3; }
 
 .hero__tag em { color: var(--cream); font-style: italic; }
 .hero__sub { color: var(--muted); }
-.hero__cta { display: flex; flex-wrap: wrap; gap: 12px; }
-
-@media (min-width: 64em) {
-  .hero {
-    display: flex;
-    align-items: center;
-    min-height: min(92svh, 800px);
-    padding-block: var(--pad);
-  }
-
-  .hero__in { flex: 1; }
-  .hero__media { inset: 0; height: auto; }
-
-  .hero__media img {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 68%;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 26%);
-    mask-image: linear-gradient(to right, transparent 0%, #000 26%);
-  }
-
-  .hero__media::after {
-    background: linear-gradient(to right,
-      rgba(var(--bg-rgb), 0.88) 0%,
-      rgba(var(--bg-rgb), 0.88) 44%,
-      rgba(var(--bg-rgb), 0) 72%);
-  }
-}
-
+.hero__cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
 /* ==========================================================
    2. ABOUT: heading left, text right (stacked on phones). Text only.
    ========================================================== */
