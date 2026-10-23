@@ -242,7 +242,7 @@ h3 { font-size: 20px; line-height: 1.3; }
   top: 0;
   left: 0;
   right: 0;
-  height: clamp(280px, 80vw, 440px);
+  height: clamp(240px, 70vw, 380px);
 }
 
 .hero__media img {
@@ -298,7 +298,7 @@ h3 { font-size: 20px; line-height: 1.3; }
     position: absolute;
     top: 0;
     right: 0;
-    width: 68%;
+    width: 60%;
     -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 26%);
     mask-image: linear-gradient(to right, transparent 0%, #000 26%);
   }
